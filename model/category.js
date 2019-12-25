@@ -4,7 +4,7 @@ class Category {
 
     static locationB = 'b-1'
 
-    static async getGridCategory() {
+    static async getHomeLocationC() {
         return await Http.request({
             url: `/category/grid/all`,
         })

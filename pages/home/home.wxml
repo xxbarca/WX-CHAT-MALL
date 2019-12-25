@@ -1,4 +1,4 @@
-<view>
+<view class="container">
     <image class="top-theme" src="{{themeA.entrance_img}}" />
     <swiper class="swiper" indicator-dots autoplay indicator-active-color="#157658" circular>
         <block wx:key="swiper" wx:for="{{bannerB.items}}">
@@ -8,4 +8,5 @@
         </block>
     </swiper>
     <s-category-grid grid="{{grid}}"></s-category-grid>
+    <image src="{{activityD.entrance_img}}" class="activity" />
 </view>
