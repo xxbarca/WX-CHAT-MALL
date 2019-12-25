@@ -2,3 +2,8 @@
     width: 100%;
     height: 260rpx;
 }
+
+.swiper {
+    height: 360rpx;
+    width: 100%;
+}

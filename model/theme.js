@@ -1,7 +1,7 @@
 import { Http } from "../utils/http"
 
 class Theme {
-    static async getHomeLocationA(callback) {
+    static async getHomeLocationA() {
         return await Http.request({
             url: '/theme/by/names',
             data: {
