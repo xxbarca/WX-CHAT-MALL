@@ -9,7 +9,10 @@ Page({
 	data: {
 		themeA: null,
 		themeE: null,
+		themeF: null,
+		themeH: null,
 		bannerB: null,
+		bannerG: null,
 		themeESpu: [],
 		grid: [],
 		activityD: null
@@ -22,8 +25,10 @@ Page({
 	async initAllData() {
 		const theme = new Theme()
 		await theme.getThemes()
-		const themeA = await theme.getHomeLocationA()
-		const themeE = await theme.getHomeLocationE()
+		const themeA = theme.getHomeLocationA()
+		const themeE = theme.getHomeLocationE()
+		const themeH = theme.getHomeLocationH()
+		const themeF = theme.getHomeLocationF()
 		let themeESpu = []
 		if (themeE.online) {
 			const data = await Theme.getHomeLocationESpu()
@@ -32,13 +37,17 @@ Page({
 			}
 		}
 		const bannerB = await Banner.getHomeLocationB()
+		const bannerG = await Banner.getHomeLocationG()
 		const grid = await Category.getHomeLocationC()
 		const activityD = await Activity.getHomeLocationD()
 		this.setData({
 			themeA,
 			themeE,
+			themeF,
+			themeH,
 			themeESpu,
 			bannerB,
+			bannerG,
 			grid,
 			activityD
 		})

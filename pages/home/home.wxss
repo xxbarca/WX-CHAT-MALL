@@ -18,4 +18,20 @@
     width: 100%;
     height: 310rpx;
     display: flex;
+    margin-bottom: 20rpx;
+}
+
+.quality {
+    margin-top: 20rpx;
+    width: 100%;
+    height: 880rpx;
+    display: flex;
+    margin-bottom: 20rpx;
+}
+
+.fashion {
+    width: 100%;
+    height: 840rpx;
+    display: flex;
+    margin-top: 20rpx;
 }

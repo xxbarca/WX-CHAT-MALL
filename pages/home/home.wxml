@@ -10,4 +10,8 @@
     <s-category-grid grid="{{grid}}"></s-category-grid>
     <image src="{{activityD.entrance_img}}" class="activity" />
     <s-spu-scroll wx:if="{{themeE.online}}" theme="{{themeE}}" spu-list="{{themeESpu}}"></s-spu-scroll>
+    <image src="{{themeF.entrance_img}}" class="quality" />
+    <s-hot-list banner="{{bannerG}}"></s-hot-list>
+    <image src="{{themeH.entrance_img}}" class="fashion" />
+
 </view>
