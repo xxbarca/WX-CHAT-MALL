@@ -8,12 +8,12 @@
 }
 
 .price-unit {
-    font-size: 28rpx !important; 
+    font-size: 24rpx !important; 
     color: #157658 !important;
 }
 
 .price-value {
-    font-size: 32rpx !important;
+    font-size: 26rpx !important;
     color: #157658 !important;
 }
 
@@ -34,6 +34,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.spu-text {
+    font-size: 20rpx;
+    color: #666666;
+    margin-top: 20rpx;
 }
 
 .spu-img {
