@@ -7,11 +7,22 @@
             </swiper-item>
         </block>
     </swiper>
+    
     <s-category-grid grid="{{grid}}"></s-category-grid>
+    
     <image src="{{activityD.entrance_img}}" class="activity" />
+    
     <s-spu-scroll wx:if="{{themeE.online}}" theme="{{themeE}}" spu-list="{{themeESpu}}"></s-spu-scroll>
+    
     <image src="{{themeF.entrance_img}}" class="quality" />
+    
     <s-hot-list banner="{{bannerG}}"></s-hot-list>
+    
     <image src="{{themeH.entrance_img}}" class="fashion" />
+    
+    <view class="spu-bottom">
+        <image src="../../imgs/home/title@interest.png" class="title-spu-bottom" />
+        <l-water-flow generic:l-water-flow-item=""></l-water-flow>
+    </view>
 
 </view>

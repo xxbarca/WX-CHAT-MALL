@@ -1,7 +1,7 @@
 <view class="container">
     <image src="{{banner.img}}" class="title" />
     <view class="inner-container">
-        <view hover-class="rect-hover" hover-stay-time="2000">
+        <view hover-class="rect-hover" hover-stay-time="300">
             <image src="{{left.img}}" class="left" />
         </view>
         <view class="right-container">
