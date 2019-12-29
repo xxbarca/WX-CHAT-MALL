@@ -1,28 +1,29 @@
-<view class="container">
-    <image class="top-theme" src="{{themeA.entrance_img}}" />
-    <swiper class="swiper" indicator-dots autoplay indicator-active-color="#157658" circular>
-        <block wx:key="swiper" wx:for="{{bannerB.items}}">
-            <swiper-item>
-                <image class="swiper" src="{{item.img}}"/>
-            </swiper-item>
-        </block>
-    </swiper>
-    
-    <s-category-grid grid="{{grid}}"></s-category-grid>
-    
-    <image src="{{activityD.entrance_img}}" class="activity" />
-    
-    <s-spu-scroll wx:if="{{themeE.online}}" theme="{{themeE}}" spu-list="{{themeESpu}}"></s-spu-scroll>
-    
-    <image src="{{themeF.entrance_img}}" class="quality" />
-    
-    <s-hot-list banner="{{bannerG}}"></s-hot-list>
-    
-    <image src="{{themeH.entrance_img}}" class="fashion" />
-    
-    <view class="spu-bottom">
-        <image src="../../imgs/home/title@interest.png" class="title-spu-bottom" />
-        <l-water-flow wx:key="s-spu-preview" generic:l-water-flow-item="s-spu-preview"></l-water-flow>
+<l-loadmore show>
+    <view slot='content' class="container">
+        <image class="top-theme" src="{{themeA.entrance_img}}" />
+        <swiper class="swiper" indicator-dots autoplay indicator-active-color="#157658" circular>
+            <block wx:key="swiper" wx:for="{{bannerB.items}}">
+                <swiper-item>
+                    <image class="swiper" src="{{item.img}}"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        
+        <s-category-grid grid="{{grid}}"></s-category-grid>
+        
+        <image src="{{activityD.entrance_img}}" class="activity" />
+        
+        <s-spu-scroll wx:if="{{themeE.online}}" theme="{{themeE}}" spu-list="{{themeESpu}}"></s-spu-scroll>
+        
+        <image src="{{themeF.entrance_img}}" class="quality" />
+        
+        <s-hot-list banner="{{bannerG}}"></s-hot-list>
+        
+        <image src="{{themeH.entrance_img}}" class="fashion" />
+        
+        <view class="spu-bottom">
+            <image src="../../imgs/home/title@interest.png" class="title-spu-bottom" />
+            <l-water-flow wx:key="s-spu-preview" generic:l-water-flow-item="s-spu-preview"></l-water-flow>
+        </view>
     </view>
-
-</view>
+</l-loadmore>

@@ -79,7 +79,6 @@ Page({
 		if (!data) {
 			return
 		}
-
 		wx.lin.renderWaterFlow(data.items)
 	},
 
