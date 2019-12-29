@@ -8,10 +8,23 @@
                 <l-tag l-class='l-tag' size='super-mini'>{{item}}</l-tag>
             </block>
         </view>
-        <l-price value="{{p.mainPrice(data.price, data.discount_price).price}}"></l-price>
-        <l-price deleted 
-                wx:if="{{p.slashPrice(data.price, data.discount_price).display}}" 
-                value="{{p.slashPrice(data.price, data.discount_price).price}}"></l-price>
-        <text>{{data.subtitle}}</text>
+        <view class="price-row">
+            <l-price 
+                color="#157658"
+                value-size='28'
+                unit-size='20'
+                autofix
+                value="{{p.mainPrice(data.price, data.discount_price).price}}"></l-price>
+            
+            <l-price 
+                    color='#999999'
+                    size='26'
+                    autofix
+                    deleted 
+                    l-class='discount-price'
+                    wx:if="{{p.slashPrice(data.price, data.discount_price).display}}" 
+                    value="{{p.slashPrice(data.price, data.discount_price).price}}"></l-price>
+        </view>        
+        <text class="subtitle">{{data.subtitle}}</text>
     </view>
 </view>

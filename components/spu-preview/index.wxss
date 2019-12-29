@@ -19,6 +19,14 @@
     height: 360rpx;
 }
 
+.tags {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8rpx;
+    margin-top: 6rpx;
+    flex-wrap: wrap;
+}
+
 .l-tag {
     background-color: #dcede6 !important;
     color: #157658 !important;
@@ -31,4 +39,20 @@
 .title {
     font-size: 28rpx;
     color: #333333;
+}
+
+.price-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.discount-price {
+    margin-left: 20rpx;
+}
+
+.subtitle {
+    font-size: 30rpx;
+    font-weight: 300;
+    margin-top: 6rpx;
+    color: #888;
 }
