@@ -1,2 +1,17 @@
-<!--components/spu-preview/index.wxml-->
-<text>components/spu-preview/index.wxml</text>
+<wxs src="../../wxs/price.wxs" module="p"></wxs>
+<view class="container">
+    <image src="{{data.img}}" class="img" />
+    <view class="content-container">
+        <text class='title'>{{data.title}}</text>
+        <view class="tags">
+            <block wx:for="{{tags}}">
+                <l-tag l-class='l-tag' size='super-mini'>{{item}}</l-tag>
+            </block>
+        </view>
+        <l-price value="{{p.mainPrice(data.price, data.discount_price).price}}"></l-price>
+        <l-price deleted 
+                wx:if="{{p.slashPrice(data.price, data.discount_price).display}}" 
+                value="{{p.slashPrice(data.price, data.discount_price).price}}"></l-price>
+        <text>{{data.subtitle}}</text>
+    </view>
+</view>
