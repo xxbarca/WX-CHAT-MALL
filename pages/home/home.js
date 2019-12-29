@@ -16,7 +16,8 @@ Page({
 		bannerG: null,
 		themeESpu: [],
 		grid: [],
-		activityD: null
+		activityD: null,
+		spuPaging: null
 	},
 
 	async onLoad (options) {
@@ -27,6 +28,7 @@ Page({
 	async initBottomSpuList() {
 
 		const paging = await SpuPaging.getLatestPaging()
+		this.data.spuPaging = paging
 		const data = await paging.getMoreData()
 		if (!data) {
 			return
@@ -71,8 +73,14 @@ Page({
 
 	},
 
-	onReachBottom: function () {
+	// 上拉加载
+	onReachBottom: async function () {
+		const data = await this.data.spuPaging.getMoreData()
+		if (!data) {
+			return
+		}
 
+		wx.lin.renderWaterFlow(data.items)
 	},
 
 	onShareAppMessage: function () {

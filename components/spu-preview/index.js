@@ -28,6 +28,13 @@ Component({
 
 	
 	methods: {
-
+		onImageLoad(event) {
+			const { width, height } = event.detail
+			this.setData({
+				w: 340,
+				h: 340 * height / width
+			})
+			
+		}
 	}
 })
