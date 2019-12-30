@@ -1,88 +1,104 @@
-
-import { Theme } from '../../model/theme'
-import { Banner } from '../../model/banner'
-import { Category } from '../../model/category'
-import { Activity } from '../../model/activity'
-import { SpuPaging } from '../../model/spu-paging'
+// pages/home/home.js
+import {Theme} from '../../model/theme'
+import {Banner} from '../../model/banner'
+import {Category} from "../../model/category";
+import {Activity} from "../../model/activity";
+import {SpuPaging} from "../../model/spu-paging";
 
 Page({
 
-	data: {
-		themeA: null,
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        themeA: null,
 		themeE: null,
 		themeF: null,
-		themeH: null,
 		bannerB: null,
 		bannerG: null,
-		themeESpu: [],
-		grid: [],
-		activityD: null,
-		spuPaging: null
-	},
+        grid: [],
+        activityD: null,
+        spuPaging:null,
+        loadingType:'loading'
+    },
 
-	async onLoad (options) {
-		this.initAllData()
-		this.initBottomSpuList()
-	},
+    async onLoad(options) {
+        this.initAllData()
+        this.initBottomSpuList()
+    },
 
-	async initBottomSpuList() {
+    async initBottomSpuList() {
+        const paging = SpuPaging.getLatestPaging()
+        this.data.spuPaging = paging
+        const data = await paging.getMoreData()
+        if (!data) {
+            return
+        }
 
-		const paging = await SpuPaging.getLatestPaging()
-		this.data.spuPaging = paging
-		const data = await paging.getMoreData()
-		if (!data) {
-			return
-		}
-		wx.lin.renderWaterFlow(data.items)
-	},
-
-	async initAllData() {
-		const theme = new Theme()
-		await theme.getThemes()
-		const themeA = theme.getHomeLocationA()
-		const themeE = theme.getHomeLocationE()
-		const themeH = theme.getHomeLocationH()
-		const themeF = theme.getHomeLocationF()
-		let themeESpu = []
-		if (themeE.online) {
-			const data = await Theme.getHomeLocationESpu()
-			if (data) {
-				themeESpu = data.spu_list.splice(0, 8)
-			}
-		}
-		const bannerB = await Banner.getHomeLocationB()
-		const bannerG = await Banner.getHomeLocationG()
-		const grid = await Category.getHomeLocationC()
-		const activityD = await Activity.getHomeLocationD()
-		this.setData({
-			themeA,
-			themeE,
-			themeF,
-			themeH,
-			themeESpu,
-			bannerB,
-			bannerG,
-			grid,
-			activityD
-		})
-		
-	},
+        wx.lin.renderWaterFlow(data.items)
 
 
-	onPullDownRefresh: function () {
+    },
 
-	},
+    async initAllData() {
+        const theme = new Theme()
+        await theme.getThemes()
 
-	// 上拉加载
-	onReachBottom: async function () {
-		const data = await this.data.spuPaging.getMoreData()
-		if (!data) {
-			return
-		}
-		wx.lin.renderWaterFlow(data.items)
-	},
+        const themeA = theme.getHomeLocationA()
+        const themeE = theme.getHomeLocationE()
+        let themeESpu = []
 
-	onShareAppMessage: function () {
+        if (themeE.online) {
+            const data = await Theme.getHomeLocationESpu()
+            if (data) {
+                themeESpu = data.spu_list.slice(0, 8)
+            }
+        }
 
-	}
+        const themeF = theme.getHomeLocationF()
+
+        const bannerB = await Banner.getHomeLocationB()
+        const grid = await Category.getHomeLocationC()
+        const activityD = await Activity.getHomeLocationD()
+
+        const bannerG = await Banner.getHomeLocationG()
+
+        const themeH = theme.getHomeLocationH()
+
+        this.setData({
+            themeA,
+            bannerB,
+            grid,
+            activityD,
+            themeE,
+            themeESpu,
+            themeF,
+            bannerG,
+            themeH
+        })
+    },
+
+    onReachBottom: async function () {
+        const data = await this.data.spuPaging.getMoreData()
+        if(!data){
+            return
+        }
+        wx.lin.renderWaterFlow(data.items)
+        if(!data.moreData){
+            this.setData({
+                loadingType:'end'
+            })
+        }
+    },
+
+    onPullDownRefresh: function () {
+
+    },
+
+
+    onShareAppMessage: function () {
+
+    }
 })
+
+

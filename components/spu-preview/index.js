@@ -7,7 +7,9 @@ Component({
 
 	
 	data: {
-		tags: Array
+		tags: Array,
+		w: String,
+		h: String
 	},
 
 	observers: {

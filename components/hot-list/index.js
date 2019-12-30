@@ -28,7 +28,9 @@ Component({
 	},
 	
 	data: {
-
+		left: Object,
+		rightTop: Object,
+		rightBottom: Object
 	},
 
 	
