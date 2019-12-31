@@ -3,11 +3,9 @@ import {Spu} from "../../models/spu";
 
 Page({
 
-
     data: {
         spu: Object
     },
-
 
     onLoad: async function (options) {
         const pid = options.pid
@@ -15,13 +13,5 @@ Page({
         this.setData({
             spu
         })
-
-
     },
-
-
-
-
-
-
 })
