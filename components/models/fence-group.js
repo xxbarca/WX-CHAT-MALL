@@ -23,12 +23,25 @@ class FenceGroup {
             }
             fences[currentJ].pushValueTitle(element.value)
         })
+    }
+
+    initFences1() {
+        const martix = this._createMatrix(this.skuList)
+        //
+        const fences = []
+        const AT = martix.transpose()
+        AT.forEach(r => {
+            const fence = new Fence(r)
+            fence.init()
+            fences.push(fence)
+        })
+
         console.log(fences)
+
     }
 
     _createFence(element) {
         const fence = new Fence()
-        // fence.pushValueTitle(element.value)
         return fence
     }
 
