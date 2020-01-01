@@ -13,7 +13,7 @@ class Matrix {
         return this.martix[0].length
     }
 
-    forEach(callback) {
+    each(callback) {
         for (let j = 0; j < this.colsNum; j++) {
             for (let i = 0; i < this.rowsNum; i++) {
                 const element = this.martix[i][j]

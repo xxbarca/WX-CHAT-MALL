@@ -9,13 +9,13 @@ class FenceGroup {
        this.spu = spu;
        this.skuList = spu.sku_list
     }
-    initFences() {
+    initFences1() {
         const martix = this._createMatrix(this.skuList)
         //
         const fences = []
         // 当列号发生改变则为一个新的fence
         let currentJ = -1
-        martix.forEach((element, i, j) => {
+        martix.each((element, i, j) => {
             if(currentJ !== j) {
                 // 开启一个新列, 需要创建一个新的fence
                 currentJ = j
@@ -25,7 +25,7 @@ class FenceGroup {
         })
     }
 
-    initFences1() {
+    initFences() {
         const martix = this._createMatrix(this.skuList)
         //
         const fences = []
@@ -35,9 +35,7 @@ class FenceGroup {
             fence.init()
             fences.push(fence)
         })
-
         console.log(fences)
-
     }
 
     _createFence(element) {
