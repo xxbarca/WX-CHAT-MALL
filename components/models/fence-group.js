@@ -5,6 +5,7 @@ import {Fence} from "./fence";
 class FenceGroup {
     spu
     skuList = []
+    fences = []
     constructor(spu) {
        this.spu = spu;
        this.skuList = spu.sku_list
@@ -35,6 +36,7 @@ class FenceGroup {
             fence.init()
             fences.push(fence)
         })
+        this.fences = fences
         console.log(fences)
     }
 
@@ -48,6 +50,7 @@ class FenceGroup {
         skuList.forEach(sku => {
             m.push(sku.specs)
         })
+
         return new Matrix(m)
     }
 

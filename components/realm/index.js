@@ -10,7 +10,7 @@ Component({
     },
 
     data: {
-
+        fences: Array
     },
 
     observers: {
@@ -20,10 +20,15 @@ Component({
             }
             const fenceGroup = new FenceGroup(spu)
             fenceGroup.initFences()
+            this.bindInitData(fenceGroup)
         }
     },
 
     methods: {
-
+        bindInitData(fenceGroup) {
+            this.setData({
+                fences: fenceGroup.fences
+            })
+        }
     }
 })

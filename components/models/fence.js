@@ -14,6 +14,7 @@ class Fence {
     // 规格名主键
     id
 
+    //{key_id: 1, key: "颜色", value_id: 45, value: "金属灰"}
     constructor(specs) {
         this.specs = specs
         this.title = specs[0].key
