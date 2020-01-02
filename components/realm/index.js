@@ -31,6 +31,9 @@ Component({
             this.setData({
                 fences: fenceGroup.fences
             })
+        },
+        onCelltap(cell) {
+            console.log(cell)
         }
     }
 })
