@@ -18,6 +18,11 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        onTap(event) {
+            this.triggerEvent('celltap', {
+                // 子组件通过事件向父组件传参
 
+            })
+        }
     }
 })
