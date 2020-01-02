@@ -5,7 +5,6 @@ class Judger {
     fenceGroup
     pathDict = []
 
-
     constructor(fenceGroup) {
         this.fenceGroup = fenceGroup
         this.initPathDict()
@@ -16,7 +15,6 @@ class Judger {
             const skuCode = new SkuCode(s.code)
             this.pathDict = this.pathDict.concat(skuCode.totalSegments)
         })
-        console.log(this.pathDict)
     }
 }
 
