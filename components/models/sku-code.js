@@ -7,7 +7,7 @@ class SkuCode {
     spuId
     totalSegments = []
 
-    constructor(code) {
+     constructor(code) {
         this.code = code
         this._splitToSegment()
     }
@@ -22,7 +22,10 @@ class SkuCode {
         const length = specCodeArray.length
         for (let i = 1; i <= length; i++) {
             const segments = combination(specCodeArray, i)
-            console.log(segments)
+            const newSegments = segments.map(segs => {
+                return segs.join('#')
+            })
+            this.totalSegments = this.totalSegments.concat(newSegments)
         }
     }
 }
