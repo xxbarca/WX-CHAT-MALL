@@ -3,7 +3,7 @@
         <image src="" />
     </view>
     <block wx:key="{{index}}" wx:for="{{fences}}">
-        <s-fence bind:celltap="onCelltap" fence="{{item}}"></s-fence>
+        <s-fence x="{{index}}" bind:celltap="onCelltap" fence="{{item}}"></s-fence>
     </block>
     <view class="counter-container">
 

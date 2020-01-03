@@ -4,7 +4,9 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        cell: Object
+        cell: Object,
+        x: Number,
+        y: Number
     },
 
     /**
@@ -22,7 +24,9 @@ Component({
             // cell -> fence -> realm
             this.triggerEvent('celltap', {
                 // 子组件通过事件向父组件传参
-                cell: this.properties.cell
+                cell: this.properties.cell,
+                x: this.properties.x,
+                y: this.properties.y
             }, {
                 // 是否冒泡
                 bubbles: true,
