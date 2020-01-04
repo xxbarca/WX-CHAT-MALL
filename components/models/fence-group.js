@@ -39,6 +39,15 @@ class FenceGroup {
         this.fences = fences
     }
 
+    eachCell(callback) {
+        for (let i = 0; i < this.fences.length; i++) {
+            for (let j = 0; j < this.fences[i].cells.length; j++) {
+                const cell = this.fences[i].cells[j]
+                callback(cell, i, j)
+            }
+        }
+    }
+
     _createFence(element) {
         const fence = new Fence()
         return fence
@@ -49,10 +58,8 @@ class FenceGroup {
         skuList.forEach(sku => {
             m.push(sku.specs)
         })
-
         return new Matrix(m)
     }
-
 }
 
 export {
