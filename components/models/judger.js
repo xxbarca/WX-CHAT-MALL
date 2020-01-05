@@ -1,14 +1,22 @@
 import {SkuCode} from "./sku-code";
 import {CellTagStatue} from "../../core/enum";
+import { SkuPending } from "./sku-pending";
+import {Joiner} from '../../utils/joiner'
 
 class Judger {
 
     fenceGroup
     pathDict = []
+    skuPending
 
     constructor(fenceGroup) {
         this.fenceGroup = fenceGroup
+        this._initSkuPending()
         this._initPathDict()
+    }
+
+    _initSkuPending() {
+        this.skuPending = new SkuPending()
     }
 
     _initPathDict() {
@@ -23,22 +31,45 @@ class Judger {
     //3. 对于某个cell, 不需要考虑当前行其他cell是否已选
     judge(cell, x, y) {
         this._changeCurrentCellStatue(cell, x, y)
-        this.fenceGroup.eachCell(this._changeOtherCellStatus)
+        this.fenceGroup.eachCell((cell, x, y) => {
+            const path = this._findPotentialPath(cell, x, y)
+            console.log(path)
+        })
     }
-
-    _changeOtherCellStatus(cell, x, y) {
-
-    }
-
     //
-    _findPotentialPath(cell, x, y) {}
+    _findPotentialPath(cell, x, y) {
+        const joiner = new Joiner("#")
+        for (let i = 0; i < this.fenceGroup.fences.length; i++) {
+            const selected = this.skuPending.findSelectedCellByX(i)
+            if (x === i) {
+                // 是当前行 cell id 1-42
+                const cellCode = this._getCellCode(cell.spec)
+                joiner.join(cellCode)
+            } else {
+                // 非当前行
+                if (selected) {
+                    const selectedCellCode = this._getCellCode(selected.spec)
+                    joiner.join(selectedCellCode)
+                } else {
+
+                }
+            }
+        }
+        return joiner.getStr()
+    }
+
+    _getCellCode(spec) {
+        return spec.key_id + '-' + spec.value_id
+    }
 
     _changeCurrentCellStatue(cell, x, y) {
         if (cell.status === CellTagStatue.WAITING) {
             this.fenceGroup.fences[x].cells[y].status = CellTagStatue.SELECTED
+            this.skuPending.insertCell(cell, x)
         }
         if (cell.status === CellTagStatue.SELECTED) {
             this.fenceGroup.fences[x].cells[y].status = CellTagStatue.WAITING
+            this.skuPending.removeCell(x)
         }
     }
 }
