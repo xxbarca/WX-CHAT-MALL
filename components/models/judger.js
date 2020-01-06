@@ -33,8 +33,22 @@ class Judger {
         this._changeCurrentCellStatue(cell, x, y)
         this.fenceGroup.eachCell((cell, x, y) => {
             const path = this._findPotentialPath(cell, x, y)
-            console.log(path)
+            if (!path) {
+                return
+            }
+            // console.log(path)
+            const isIn = this._isInDict(path)
+            console.log(`path=${path}, isIn=${isIn}`)
+            if (isIn) {
+                this.fenceGroup.fences[x].cells[y].status = CellTagStatue.WAITING
+            } else {
+                this.fenceGroup.fences[x].cells[y].status = CellTagStatue.FORBIDDEN
+            }
         })
+    }
+
+    _isInDict(path) {
+        return this.pathDict.includes(path)
     }
     //
     _findPotentialPath(cell, x, y) {
@@ -43,6 +57,9 @@ class Judger {
             const selected = this.skuPending.findSelectedCellByX(i)
             if (x === i) {
                 // 是当前行 cell id 1-42
+                if (this.skuPending.isSelected(cell, x)) {
+                    return
+                }
                 const cellCode = this._getCellCode(cell.spec)
                 joiner.join(cellCode)
             } else {

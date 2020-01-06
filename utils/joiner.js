@@ -21,7 +21,7 @@ class Joiner {
     }
 
     getStr() {
-        return this._str.substring(0, this._str.length)
+        return this._str.substring(0, this._str.length - this._cutCharNum)
     }
 }
 
