@@ -1,7 +1,7 @@
-import {SkuCode} from "./sku-code";
-import {CellTagStatue} from "../../core/enum";
+import { SkuCode } from "./sku-code";
+import { CellTagStatue } from "../../core/enum";
 import { SkuPending } from "./sku-pending";
-import {Joiner} from '../../utils/joiner'
+import { Joiner } from '../../utils/joiner'
 
 class Judger {
 
