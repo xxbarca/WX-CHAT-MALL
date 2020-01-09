@@ -1,7 +1,6 @@
 import {Matrix} from "./matrix";
 import {Fence} from "./fence";
 
-
 class FenceGroup {
     spu
     skuList = []
@@ -24,6 +23,28 @@ class FenceGroup {
             }
             fences[currentJ].pushValueTitle(element.value)
         })
+    }
+
+    // 获取默认的sku
+    getDefaultSku() {
+        const defaultSkuId = this.spu.default_sku_id
+        if (!defaultSkuId) {
+            return
+        }
+        return this.skuList.find(s => s.id === defaultSkuId)
+    }
+
+    // 设置默认 状态 通过 id
+    setStatusById(cellId, status) {
+        this.eachCell((cell) => {
+            if (cell.id === cellId) {
+                cell.status = status
+            }
+        })
+    }
+
+    setStatusByXY(x, y, status) {
+        this.fences[x].cells[y].status = status
     }
 
     initFences() {

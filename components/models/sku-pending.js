@@ -1,3 +1,7 @@
+/**
+ * 记录已选的cell
+ * */
+import {Cell} from "./cell";
 
 
 class SkuPending {
@@ -6,6 +10,13 @@ class SkuPending {
 
     constructor() {
 
+    }
+
+    init(sku) {
+        for (let i = 0; i < sku.specs.length; i++) {
+            const cell = new Cell(sku.specs[i])
+            this.insertCell(cell, i)
+        }
     }
 
     // x: 行号, 0, 1, 2 ...

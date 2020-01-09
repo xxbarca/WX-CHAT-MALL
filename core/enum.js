@@ -1,9 +1,9 @@
-const CellTagStatue = {
+const CellTagStatus = {
     FORBIDDEN: "forbidden",
     SELECTED: "selected",
     WAITING: "waiting"
 }
 
 export {
-    CellTagStatue
+    CellTagStatus
 }

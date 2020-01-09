@@ -1,14 +1,14 @@
 /**
  * 规格值
  * */
-import {CellTagStatue} from "../../core/enum";
+import {CellTagStatus} from "../../core/enum";
 
 
 class Cell {
     title
     id
 
-    status = CellTagStatue.WAITING
+    status = CellTagStatus.WAITING
     spec
 
     constructor(spec) {

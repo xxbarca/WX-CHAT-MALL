@@ -1,7 +1,8 @@
 import { SkuCode } from "./sku-code";
-import { CellTagStatue } from "../../core/enum";
+import { CellTagStatus } from "../../core/enum";
 import { SkuPending } from "./sku-pending";
 import { Joiner } from '../../utils/joiner'
+import {Cell} from "./cell";
 
 class Judger {
 
@@ -11,12 +12,25 @@ class Judger {
 
     constructor(fenceGroup) {
         this.fenceGroup = fenceGroup
-        this._initSkuPending()
         this._initPathDict()
+
+        this._initSkuPending()
+
     }
 
+    // 默认规格
     _initSkuPending() {
         this.skuPending = new SkuPending()
+        const defaultSku = this.fenceGroup.getDefaultSku()
+        if (!defaultSku) {
+            return
+        }
+        this.skuPending.init(defaultSku)
+        this.skuPending.pending.forEach(cell => {
+            this.fenceGroup.setStatusById(cell.id, CellTagStatus.SELECTED)
+        })
+        this.judge(null, null, null, true)
+        console.log(this.skuPending)
     }
 
     _initPathDict() {
@@ -29,20 +43,24 @@ class Judger {
     //1. 当前cell不需要判断潜在路径
     //2. 对于某个cell, 它的潜在路径应该是他自己加上其他已选cell
     //3. 对于某个cell, 不需要考虑当前行其他cell是否已选
-    judge(cell, x, y) {
-        this._changeCurrentCellStatue(cell, x, y)
+    judge(cell, x, y, isInit = false) {
+        // 是否初始化的时候调用
+        if (!isInit) {
+            this._changeCurrentCellStatue(cell, x, y)
+        }
         this.fenceGroup.eachCell((cell, x, y) => {
             const path = this._findPotentialPath(cell, x, y)
+            console.log(path)
             if (!path) {
                 return
             }
-            // console.log(path)
             const isIn = this._isInDict(path)
-            console.log(`path=${path}, isIn=${isIn}`)
             if (isIn) {
-                this.fenceGroup.fences[x].cells[y].status = CellTagStatue.WAITING
+                // this.fenceGroup.fences[x].cells[y].status = CellTagStatus.WAITING
+                this.fenceGroup.setStatusByXY(x, y, CellTagStatus.WAITING)
             } else {
-                this.fenceGroup.fences[x].cells[y].status = CellTagStatue.FORBIDDEN
+                // this.fenceGroup.fences[x].cells[y].status = CellTagStatus.FORBIDDEN
+                this.fenceGroup.setStatusByXY(x, y, CellTagStatus.FORBIDDEN)
             }
         })
     }
@@ -50,7 +68,8 @@ class Judger {
     _isInDict(path) {
         return this.pathDict.includes(path)
     }
-    //
+
+    // TODO
     _findPotentialPath(cell, x, y) {
         const joiner = new Joiner("#")
         for (let i = 0; i < this.fenceGroup.fences.length; i++) {
@@ -80,12 +99,14 @@ class Judger {
     }
 
     _changeCurrentCellStatue(cell, x, y) {
-        if (cell.status === CellTagStatue.WAITING) {
-            this.fenceGroup.fences[x].cells[y].status = CellTagStatue.SELECTED
+        if (cell.status === CellTagStatus.WAITING) {
+            // this.fenceGroup.fences[x].cells[y].status = CellTagStatus.SELECTED
+            this.fenceGroup.setStatusByXY(x, y, CellTagStatus.SELECTED)
             this.skuPending.insertCell(cell, x)
         }
-        if (cell.status === CellTagStatue.SELECTED) {
-            this.fenceGroup.fences[x].cells[y].status = CellTagStatue.WAITING
+        if (cell.status === CellTagStatus.SELECTED) {
+            // this.fenceGroup.fences[x].cells[y].status = CellTagStatus.WAITING
+            this.fenceGroup.setStatusByXY(x, y, CellTagStatus.WAITING)
             this.skuPending.removeCell(x)
         }
     }
