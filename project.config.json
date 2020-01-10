@@ -59,10 +59,10 @@
 			"current": -1,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
-					"query": "id=2",
+					"query": "pid=2",
 					"scene": null
 				}
 			]

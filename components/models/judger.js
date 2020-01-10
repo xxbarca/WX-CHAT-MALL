@@ -13,9 +13,7 @@ class Judger {
     constructor(fenceGroup) {
         this.fenceGroup = fenceGroup
         this._initPathDict()
-
         this._initSkuPending()
-
     }
 
     // 默认规格
@@ -26,11 +24,15 @@ class Judger {
             return
         }
         this.skuPending.init(defaultSku)
+        this._initSelectedCell()
+        this.judge(null, null, null, true)
+    }
+
+    // 设置默认选中的cell
+    _initSelectedCell() {
         this.skuPending.pending.forEach(cell => {
             this.fenceGroup.setStatusById(cell.id, CellTagStatus.SELECTED)
         })
-        this.judge(null, null, null, true)
-        console.log(this.skuPending)
     }
 
     _initPathDict() {
@@ -46,11 +48,11 @@ class Judger {
     judge(cell, x, y, isInit = false) {
         // 是否初始化的时候调用
         if (!isInit) {
+            // 用户不点击不存在 cell, x, y, 用户点击才需要调用
             this._changeCurrentCellStatue(cell, x, y)
         }
         this.fenceGroup.eachCell((cell, x, y) => {
             const path = this._findPotentialPath(cell, x, y)
-            console.log(path)
             if (!path) {
                 return
             }
