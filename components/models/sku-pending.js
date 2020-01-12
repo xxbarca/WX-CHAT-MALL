@@ -31,8 +31,8 @@ class SkuPending {
             if (this._isEmptyPart(i)) {
                 return false
             }
-            return true
         }
+        return true
     }
 
     _isEmptyPart(index) {
