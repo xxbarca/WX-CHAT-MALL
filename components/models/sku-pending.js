@@ -35,6 +35,10 @@ class SkuPending {
         return true
     }
 
+    getSkuCode() {
+
+    }
+
     _isEmptyPart(index) {
         return this.pending[index] ? false : true
     }
