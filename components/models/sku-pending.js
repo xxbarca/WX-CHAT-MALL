@@ -2,6 +2,7 @@
  * 记录已选的cell
  * */
 import {Cell} from "./cell";
+import {Joiner} from "../../utils/joiner"
 
 
 class SkuPending {
@@ -36,7 +37,12 @@ class SkuPending {
     }
 
     getSkuCode() {
-
+        const joiner = new Joiner('#')
+        this.pending.forEach(cell => {
+            const cellCode = cell.getCellCode()
+            joiner.join(cellCode)
+        })
+        return joiner.getStr()
     }
 
     _isEmptyPart(index) {

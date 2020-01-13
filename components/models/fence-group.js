@@ -34,8 +34,13 @@ class FenceGroup {
         return this.skuList.find(s => s.id === defaultSkuId)
     }
 
+    getSku(skuCode) {
+        const sku = this.spu.sku_list.find(s => s.code === skuCode)
+        return sku ? sku : null
+    }
+
     // 设置默认 状态 通过 id
-    setStatusById(cellId, status) {
+    setCellStatusById(cellId, status) {
         this.eachCell((cell) => {
             if (cell.id === cellId) {
                 cell.status = status
@@ -43,7 +48,7 @@ class FenceGroup {
         })
     }
 
-    setStatusByXY(x, y, status) {
+    setCellStatusByXY(x, y, status) {
         this.fences[x].cells[y].status = status
     }
 
