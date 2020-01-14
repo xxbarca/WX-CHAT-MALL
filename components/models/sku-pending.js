@@ -36,6 +36,16 @@ class SkuPending {
         return true
     }
 
+    // 规格值
+    getCurrentSpecValues() {
+
+    }
+
+    // 规格值
+    getMissingSpecKeys() {
+
+    }
+
     getSkuCode() {
         const joiner = new Joiner('#')
         this.pending.forEach(cell => {
