@@ -43,3 +43,11 @@
         <s-counter></s-counter>
     </view>
 </view>
+
+<view class="bottom-btn">
+    <text>加入购物车</text>
+</view>
+
+<view class="bottom-btn out-stock">
+    <text>暂时缺货</text>
+</view>
