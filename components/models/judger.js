@@ -20,6 +20,19 @@ class Judger {
         return this.skuPending.isIntact()
     }
 
+    //
+    getCurrentValues() {
+        return this.skuPending.getCurrentSpecValues()
+    }
+
+    //
+    getMissingKeys() {
+        const missingkeysIndex = this.skuPending.getMissingSpecKeysIndex()
+        return missingkeysIndex.map(i => {
+            return this.fenceGroup.fences[i].title
+        })
+    }
+
     // 默认规格
     _initSkuPending() {
         const specsLength = this.fenceGroup.fences.length

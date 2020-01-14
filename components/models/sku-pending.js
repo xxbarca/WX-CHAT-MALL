@@ -38,12 +38,23 @@ class SkuPending {
 
     // 规格值
     getCurrentSpecValues() {
-
+        const values = this.pending.map(cell => {
+            if (cell) {
+                return cell ? cell.spec.value : null
+            }
+        })
+        return values
     }
 
     // 规格值
-    getMissingSpecKeys() {
-
+    getMissingSpecKeysIndex() {
+        const keysIndex = []
+        for (let i = 0; i < this.size; i++) {
+            if (!this.pending[i]) {
+                keysIndex.push(i)
+            }
+        }
+        return keysIndex
     }
 
     getSkuCode() {
