@@ -1,0 +1,5 @@
+<l-counter l-count-class="all-background input-size"
+           l-disabled-class="all-background"
+           l-symbol-class="all-background font-color"
+           l-class="container">
+</l-counter>
