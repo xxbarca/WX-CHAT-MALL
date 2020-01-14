@@ -1,5 +1,6 @@
 
 import { Cart } from '../../models/cart'
+
 Component({
 
     properties: {
