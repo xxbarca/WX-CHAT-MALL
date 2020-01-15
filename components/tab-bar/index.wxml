@@ -7,13 +7,17 @@
         </view>
         <view bind:tap="onGoToCart">
 <!--            <l-icon size="46" name="cart" color="#157658"></l-icon>-->
-            <l-badge max-count="500" number-type="limit" value="7000">
+            <l-badge value="777">
                 <l-icon size="44" name="shopcart" l-class="sleeve"></l-icon>
             </l-badge>
             <text>购物车</text>
         </view>
     </view>
 
-    <view bind:tap="onAddtoCart" class="cart btn-font"></view>
-    <view bind:tap="onBuy" class="buy btn-font"></view>
+    <view bind:tap="onAddtoCart" class="cart btn-font">
+        <text>加入购物车</text>
+    </view>
+    <view bind:tap="onBuy" class="buy btn-font">
+        <text>立即购买</text>
+    </view>
 </view>

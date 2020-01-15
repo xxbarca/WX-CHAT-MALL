@@ -4,7 +4,8 @@ import {Spu} from "../../models/spu";
 Page({
 
     data: {
-        spu: Object
+        spu: Object,
+        showReaml: false
     },
 
     onLoad: async function (options) {
@@ -12,6 +13,17 @@ Page({
         const spu = await Spu.getDetail(pid)
         this.setData({
             spu
+        })
+    },
+
+    onAddToCart(event) {
+        this.setData({
+            showReaml: true
+        })
+    },
+    onBuy(event) {
+        this.setData({
+            showReaml: true
         })
     },
 })

@@ -12,6 +12,27 @@
     background-color: #ffffff;
 }
 
+.btn-font {
+    color: #ffffff;
+    font-size: 32rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy {
+    background-color: #157658;
+    width: 260rpx;
+    height: 100%;
+}
+
+.cart {
+    background-color: #333333;
+    width: 260rpx;
+    height: 100%;
+}
+
 .icons {
     box-sizing: border-box;
     padding-left: 16rpx;
@@ -32,6 +53,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.icons > view:nth-child(2) {
+    padding-top: 6rpx;
 }
 
 .icons text {
