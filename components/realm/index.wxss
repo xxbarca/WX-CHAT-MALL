@@ -2,6 +2,9 @@
     box-sizing: border-box;
     padding: 30rpx;
     background-color: #ffffff;
+    max-height: 500rpx;
+    /*min-height: 600rpx;*/
+
 }
 
 .sku-preview {
