@@ -2,10 +2,15 @@
 
     <view class="icons">
         <view bind:tap="onGoToHome">
-            <l-icon name="home" l-class="sleeve"></l-icon>
+            <l-icon size="46" name="home" l-class="sleeve"></l-icon>
+            <text>首页</text>
         </view>
         <view bind:tap="onGoToCart">
-            <l-icon name="cart" size="40"></l-icon>
+<!--            <l-icon size="46" name="cart" color="#157658"></l-icon>-->
+            <l-badge max-count="500" number-type="limit" value="7000">
+                <l-icon size="44" name="shopcart" l-class="sleeve"></l-icon>
+            </l-badge>
+            <text>购物车</text>
         </view>
     </view>
 

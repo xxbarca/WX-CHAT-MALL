@@ -21,6 +21,6 @@ page {
     content: "\e632";
 }
 
-.l-icon-cart:before {
+.l-icon-shopcart:before {
     content: "\e621";
 }
