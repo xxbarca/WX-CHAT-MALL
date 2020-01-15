@@ -4,6 +4,12 @@ const CellTagStatus = {
     WAITING: "waiting"
 }
 
+const ShoppingWay = {
+    CART: 'cart',
+    BUY: 'buy'
+}
+
 export {
-    CellTagStatus
+    CellTagStatus,
+    ShoppingWay
 }

@@ -1,11 +1,13 @@
 // pages/detail/detail.js
 import {Spu} from "../../models/spu";
+import {ShoppingWay} from "../../core/enum"
 
 Page({
 
     data: {
         spu: Object,
-        showReaml: false
+        showReaml: false,
+        orderWay: String
     },
 
     onLoad: async function (options) {
@@ -16,14 +18,29 @@ Page({
         })
     },
 
+    onGoToCart(event) {
+        wx.switchTab({
+            url: '/pages/cart/cart'
+        })
+
+    },
+
+    onGoToHome(event) {
+        wx.switchTab({
+            url: '/pages/home/home'
+        })
+    },
+
     onAddToCart(event) {
         this.setData({
-            showReaml: true
+            showReaml: true,
+            orderWay: ShoppingWay.CART
         })
     },
     onBuy(event) {
         this.setData({
-            showReaml: true
+            showReaml: true,
+            orderWay: ShoppingWay.BUY
         })
     },
 })
