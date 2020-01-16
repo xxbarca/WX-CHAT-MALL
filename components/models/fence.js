@@ -36,8 +36,15 @@ class Fence {
             const cell = new Cell(s)
             this.cells.push(cell)
         })
-
     }
+
+    setFenceSketch(skuList) {
+        this.cells.forEach(cell => {
+
+        })
+    }
+
+    _setCellSkuImg(cell, skuList) {}
 }
 
 export {
