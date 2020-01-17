@@ -1,0 +1,15 @@
+<view>
+    <view class="left">
+        <text class="title">{{spu.title}}</text>
+        <view class="tags">
+            <block wx:for="{{tags}}">
+                <l-tag type="reading"
+                        bg-color="#DCEBE6"
+                        font-color="#157658"
+                        size="super-mini"
+                        l-class="l-tag">{{item}}</l-tag>
+            </block>
+        </view>
+    </view>
+    <view class="right"></view>
+</view>
