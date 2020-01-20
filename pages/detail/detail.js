@@ -7,7 +7,8 @@ Page({
     data: {
         spu: Object,
         showReaml: false,
-        orderWay: String
+        orderWay: String,
+        specs: Object
     },
 
     onLoad: async function (options) {
@@ -37,6 +38,13 @@ Page({
             orderWay: ShoppingWay.CART
         })
     },
+
+    onSpecChange(event) {
+        this.setData({
+            specs: event.detail
+        })
+    },
+
     onBuy(event) {
         this.setData({
             showReaml: true,
