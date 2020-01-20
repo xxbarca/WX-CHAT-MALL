@@ -17,3 +17,12 @@
     font-size: 24rpx;
     color: #333333;
 }
+
+.inner text:before {
+    content: '·';
+    margin-right: 26rpx;
+}
+
+.container >.inner:last-child {
+    border: none;
+}

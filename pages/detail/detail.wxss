@@ -33,3 +33,14 @@
     color: #157658;
     font-size: 24rpx;
 }
+
+.explain {
+    margin-top: 10rpx;
+    background-color: #ffffff;
+    padding-bottom: 20rpx;
+    padding-top: 20rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
