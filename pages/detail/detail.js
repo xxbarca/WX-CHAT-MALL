@@ -1,6 +1,7 @@
 // pages/detail/detail.js
 import {Spu} from "../../models/spu";
 import {ShoppingWay} from "../../core/enum"
+import {SaleExplain} from "../../models/sale-explain"
 
 Page({
 
@@ -8,14 +9,17 @@ Page({
         spu: Object,
         showReaml: false,
         orderWay: String,
-        specs: Object
+        specs: Object,
+        explain: Object
     },
 
     onLoad: async function (options) {
         const pid = options.pid
         const spu = await Spu.getDetail(pid)
+        const explain = await SaleExplain.getFixed()
         this.setData({
-            spu
+            spu,
+            explain
         })
     },
 
