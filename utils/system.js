@@ -1,4 +1,5 @@
 import {promisic} from "./util"
+import {px2rpx} from "../miniprogram_npm/lin-ui/utils/util"
 
 const getSystemSize = async function () {
     const res = await promisic(wx.getSystemInfo)()
@@ -10,6 +11,12 @@ const getSystemSize = async function () {
     }
 }
 
+const getWindowHeightRpx = async function () {
+    const res = await getSystemSize()
+    return px2rpx(res.windowHeight)
+}
+
 export {
-    getSystemSize
+    getSystemSize,
+    getWindowHeightRpx
 }

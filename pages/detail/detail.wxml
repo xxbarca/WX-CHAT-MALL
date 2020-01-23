@@ -1,4 +1,4 @@
-<view>
+<scroll-view style="height:{{h}}rpx;" scroll-y>
     <swiper class="top"
             autoplay
             indicator-dots>
@@ -29,7 +29,7 @@
             <image mode="widthFix" src="{{item.img}}" class="detail-image"></image>
         </block>
     </view>
-</view>
+</scroll-view>
 
 <l-popup content-align="bottom" show="{{showReaml}}">
     <s-realm bind:specChange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-realm>

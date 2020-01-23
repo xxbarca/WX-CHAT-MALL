@@ -46,7 +46,7 @@
 }
 
 .detail-img-container {
-    margin-bottom: 200rpx;
+    /*margin-bottom: 200rpx;*/
 }
 
 .detail-img {
