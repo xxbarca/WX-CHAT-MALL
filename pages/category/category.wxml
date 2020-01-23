@@ -13,7 +13,31 @@
         </l-button>
     </view>
     <view class="main">
-        <view class=""></view>
+        <l-segment
+                height="800"
+                even="{{false}}"
+                item-height="90"
+                width="160"
+                l-active-class="segment-item-active"
+                l-inactive-class="segment-item"
+                l-line-class="l-seg-line"
+                placement="left">
+            <l-segment-item key="1" tab="唐门"></l-segment-item>
+            <l-segment-item key="2" tab="唐门"></l-segment-item>
+            <l-segment-item key="3" tab="唐门"></l-segment-item>
+            <l-segment-item key="4" tab="唐门"></l-segment-item>
+            <l-segment-item key="5" tab="唐门"></l-segment-item>
+            <l-segment-item key="6" tab="唐门"></l-segment-item>
+            <l-segment-item key="7" tab="唐门"></l-segment-item>
+            <l-segment-item key="8" tab="唐门"></l-segment-item>
+            <l-segment-item key="9" tab="唐门"></l-segment-item>
+            <l-segment-item key="10" tab="唐门"></l-segment-item>
+            <l-segment-item key="11" tab="唐门"></l-segment-item>
+            <l-segment-item key="12" tab="唐门"></l-segment-item>
+            <l-segment-item key="13" tab="唐门"></l-segment-item>
+            <l-segment-item key="14" tab="唐门"></l-segment-item>
+            <l-segment-item key="15" tab="唐门"></l-segment-item>
+        </l-segment>
         <view class=""></view>
     </view>
 </view>
