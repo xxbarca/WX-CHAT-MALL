@@ -28,7 +28,6 @@ Page({
         this.setDynamicSegmentHeight()
         // 加载数据
         this.initCategoryData()
-
     },
 
     async initCategoryData() {
@@ -38,6 +37,7 @@ Page({
         const roots = categories.getRoots()
         const defaultRoot = this.getDefaultRoot(roots)
         const currentSubs = categories.getSubs(defaultRoot.id)
+        console.log(currentSubs)
         this.setData({
             roots,
             currentSubs,

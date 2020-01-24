@@ -14,6 +14,7 @@
     </view>
     <view class="main">
         <l-segment
+                active-key="{{defaultRootId}}"
                 height="{{segHeight}}"
                 even="{{false}}"
                 item-height="90"
@@ -23,10 +24,12 @@
                 l-inactive-class="segment-item"
                 l-line-class="l-seg-line"
                 placement="left">
-            <block wx:for="{{}}" wx:key="{{index}}">
-                <l-segment-item key="{{}}" tab="{{}}"></l-segment-item>
+            <block wx:for="{{roots}}" wx:key="{{index}}">
+                <l-segment-item key="{{item.id}}" tab="{{item.name}}"></l-segment-item>
             </block>
         </l-segment>
-        <view class=""></view>
+        <view class="right">
+            <s-sub-category bannerImg="{{currentBannerImg}}" categories="{{currentSubs}}"></s-sub-category>
+        </view>
     </view>
 </view>
