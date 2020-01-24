@@ -7,7 +7,12 @@ class HistoryKeyword {
     keywords = []
 
     constructor() {
+        if (typeof HistoryKeyword.instance === 'object') {
+            return HistoryKeyword.instance
+        }
+        HistoryKeyword.instance = this
         this.keywords = this._getLocalKeywords()
+        return this
     }
 
     save(keyword) {
@@ -48,5 +53,8 @@ class HistoryKeyword {
         }
         return keywords
     }
+}
 
+export {
+    HistoryKeyword
 }
