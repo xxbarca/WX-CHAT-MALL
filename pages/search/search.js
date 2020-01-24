@@ -1,4 +1,5 @@
 import {HistoryKeyword} from "../../models/history-keyword"
+import {Tag} from "../../models/tag"
 
 
 const history = new HistoryKeyword()
@@ -7,13 +8,16 @@ Page({
 
 
     data: {
-        historyTags: Array
+        historyTags: Array,
+        hotTags: Array
     },
 
-    onLoad: function(option) {
+    onLoad: async function(option) {
         const historyTags = history.get()
+        const hotTags = await Tag.getSearchTags()
         this.setData({
-            historyTags
+            historyTags,
+            hotTags
         })
     },
 

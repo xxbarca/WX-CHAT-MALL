@@ -6,6 +6,7 @@ class HistoryKeyword {
 
     keywords = []
 
+    // TODO 单例模式
     constructor() {
         if (typeof HistoryKeyword.instance === 'object') {
             return HistoryKeyword.instance

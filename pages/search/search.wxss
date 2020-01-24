@@ -66,3 +66,10 @@ page {
     margin-right: 20rpx;
     margin-bottom: 20rpx;
 }
+
+.tag-selected {
+    background-color: #DCEBE6 !important;
+    color: #157658 !important;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+}
