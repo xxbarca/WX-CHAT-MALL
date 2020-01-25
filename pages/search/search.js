@@ -7,7 +7,6 @@ const history = new HistoryKeyword()
 
 Page({
 
-
     data: {
         historyTags: Array,
         hotTags: Array,

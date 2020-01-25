@@ -1,23 +1,50 @@
-// components/spu-preview-r/index.js
+// components/spu-preview/index.js
 Component({
-    /**
-     * 组件的属性列表
-     */
+
     properties: {
         data: Object
     },
 
-    /**
-     * 组件的初始数据
-     */
-    data: {
 
+    data: {
+        tags: Array,
+        w: String,
+        h: String
     },
 
-    /**
-     * 组件的方法列表
-     */
-    methods: {
+    observers: {
+        data: function(data) {
+            if (!data) {
+                return
+            }
 
+            if (!data.tags) {
+                return
+            }
+            const tags = data.tags.split('$')
+            this.setData({
+                tags
+            })
+        }
+    },
+
+
+    methods: {
+        onImageLoad(event) {
+            const { width, height } = event.detail
+            this.setData({
+                w: 340,
+                h: 340 * height / width
+            })
+        },
+        onItemTap(event) {
+            // 获取 id
+            const pid = event.currentTarget.dataset.pid
+            //
+            // 跳转
+            wx.navigateTo({
+                url: `/pages/detail/detail?pid=${pid}`
+            })
+        }
     }
 })
