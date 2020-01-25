@@ -57,6 +57,7 @@
     "l-segment": "/miniprogram_npm/lin-ui/segment/index",
     "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
     "l-badge": "/miniprogram_npm/lin-ui/badge/index",
+    "l-loading": "/miniprogram_npm/lin-ui/loading/index",
     "l-button": "/miniprogram_npm/lin-ui/button/index",
     "l-tag": "/miniprogram_npm/lin-ui/tag/index",
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",

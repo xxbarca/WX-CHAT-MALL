@@ -49,4 +49,6 @@
         </block>
     </view>
 
+    <l-loading></l-loading>
+
 </view>
