@@ -20,6 +20,8 @@
                 item-height="90"
                 width="160"
                 scrollable
+                bind:linchange="onSegChange"
+
                 l-active-class="segment-item-active"
                 l-inactive-class="segment-item"
                 l-line-class="l-seg-line"

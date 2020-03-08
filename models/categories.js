@@ -12,16 +12,18 @@ class Categories {
         this.roots = data.roots
         this.subs = data.subs
     }
-
-    getRoots() {
-        return this.roots
-    }
-
-    getSubs(parentId) {
-        return this.subs.filter(sub => sub.parent_id === parentId)
-        // return this.roots.find(r => r.id === rootId)
-
-    }
+	
+	getRoots() {
+		return this.roots
+	}
+	
+	getRoot(rootId) {
+		return this.roots.find(r => r.id == rootId)
+	}
+	
+	getSubs(parentId) {
+		return this.subs.filter(sub => sub.parent_id == parentId)
+	}
 }
 
 export {
