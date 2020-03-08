@@ -73,3 +73,9 @@ page {
     margin-right: 20rpx;
     margin-bottom: 20rpx;
 }
+
+.item-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
