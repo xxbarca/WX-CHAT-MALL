@@ -2,6 +2,8 @@ import {getSystemSize} from "../../utils/system"
 import {px2rpx} from "../../miniprogram_npm/lin-ui/utils/util"
 import {Categories} from "../../models/categories"
 
+import {SpuListType} from "../../core/enum"
+
 Page({
 
     /**
@@ -20,6 +22,13 @@ Page({
           url: `/pages/search/search`
         })
     },
+	onJumpToSpuList(event) {
+		const cid = event.detail.cid
+		console.log(cid)
+		wx.navigateTo({
+			url: `/pages/spu-list/spu-list?cid=${cid}&type=${SpuListType.SUB_CATEGORY}`
+		})
+	},
 	onSegChange(event) {
 		const rootId = event.detail.activeKey
 		const currentSubs = this.data.categories.getSubs(rootId)
