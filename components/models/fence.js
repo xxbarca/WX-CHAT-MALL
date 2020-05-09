@@ -45,9 +45,7 @@ class Fence {
     }
 
     _setCellSkuImg(cell, skuList) {
-        console.log(skuList)
         const specCode = cell.getCellCode()
-        console.log(specCode)
         const matchedSku = skuList.find(s => s.code.includes(specCode))
         if (matchedSku) {
             cell.skuImg = matchedSku.img
