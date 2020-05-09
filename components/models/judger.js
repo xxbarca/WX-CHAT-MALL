@@ -16,6 +16,9 @@ class Judger {
         this._initSkuPending()
     }
 
+    /**
+     * 检查是否选择了完整的sku
+     * */
     isSkuIntact() {
         return this.skuPending.isIntact()
     }
