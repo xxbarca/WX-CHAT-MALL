@@ -3,6 +3,7 @@ import {Spu} from "../../models/spu";
 import {ShoppingWay} from "../../core/enum"
 import {SaleExplain} from "../../models/sale-explain"
 import {getWindowHeightRpx} from "../../utils/system"
+import {CartItem} from "../../models/cart-item"
 
 Page({
 
@@ -28,8 +29,18 @@ Page({
         })
     },
 	
+	/**
+	 * 逻辑1: 立即购买
+	 * 逻辑2: 加入购物车
+	 * */
 	onShopping(event) {
-    	console.log(event)
+    	const chooseSku = event.detail.sku
+		const skuCount = event.detail.skuCount
+		if (event.detail.orderWay === ShoppingWay.CART) {
+			const cartItem = new CartItem(chooseSku, skuCount)
+		} else {
+		
+		}
 	},
 
     onGoToCart(event) {
