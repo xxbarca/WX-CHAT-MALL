@@ -2,7 +2,7 @@
     <swiper class="top"
             autoplay
             indicator-dots>
-        <block wx:for="{{spu.spu_img_list}}" wx:key="{{index}}">
+        <block wx:for="{{spu.spu_img_list}}" wx:key="index">
             <swiper-item>
                 <image class="top" mode="aspectFill" src="{{item.img}}"></image>
             </swiper-item>
@@ -25,14 +25,14 @@
         <s-sale-explain texts="{{explain}}"></s-sale-explain>
     </view>
     <view class="detail-img-container">
-        <block wx:for="{{spu.spu_detail_img_list}}" wx:key="{{index}}">
+        <block wx:for="{{spu.spu_detail_img_list}}" wx:key="index">
             <image mode="widthFix" src="{{item.img}}" class="detail-image"></image>
         </block>
     </view>
 </scroll-view>
 
 <l-popup content-align="bottom" show="{{showReaml}}">
-    <s-realm bind:specChange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-realm>
+    <s-realm bind:shopping="onShopping" bind:specChange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-realm>
 </l-popup>
 
 <s-tabbar class="tabbar"

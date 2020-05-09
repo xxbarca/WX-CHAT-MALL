@@ -27,12 +27,15 @@ Page({
             h
         })
     },
+	
+	onShopping(event) {
+    	console.log(event)
+	},
 
     onGoToCart(event) {
         wx.switchTab({
             url: '/pages/cart/cart'
         })
-
     },
 
     onGoToHome(event) {
