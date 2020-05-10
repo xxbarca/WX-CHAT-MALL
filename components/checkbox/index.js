@@ -1,20 +1,21 @@
-// components/checkbox/index.js
 Component({
- 
+	
 	properties: {
 		checked: Boolean
 	},
 	
+
 	data: {},
 	
 	methods: {
-		onCheck: function (event) {
+		onCheck(event) {
 			let checked = this.properties.checked
+			checked = !checked
 			this.setData({
-				checked: !this.properties.checked
+				checked
 			})
-			this.triggerSpecEvent('check', {
-				checked: checked ? false : true
+			this.triggerEvent('check', {
+				checked
 			}, {
 				bubbles: true,
 				composed: true
