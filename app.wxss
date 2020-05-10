@@ -4,12 +4,12 @@ page {
 
 @font-face {
     font-family: 'sleeve';  /* project id 1613190 */
-    src: url('//at.alicdn.com/t/font_1613190_wtolfj3zyh.eot');
-    src: url('//at.alicdn.com/t/font_1613190_wtolfj3zyh.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1613190_wtolfj3zyh.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1613190_wtolfj3zyh.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1613190_wtolfj3zyh.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1613190_wtolfj3zyh.svg#sleeve') format('svg');
+    src: url('//at.alicdn.com/t/font_1613190_knod13uku.eot');
+    src: url('//at.alicdn.com/t/font_1613190_knod13uku.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1613190_knod13uku.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1613190_knod13uku.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1613190_knod13uku.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1613190_knod13uku.svg#sleeve') format('svg');
 }
 
 .sleeve {
@@ -23,4 +23,8 @@ page {
 
 .l-icon-shopcart:before {
     content: "\e621";
+}
+
+.l-icon-check:before {
+    content: "\e7cc";
 }
