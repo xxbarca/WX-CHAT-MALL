@@ -18,6 +18,7 @@ Page({
 		this.setData({
 			cartItems
 		})
+		this.notEmpty()
 	},
 	
 	empty() {
@@ -25,6 +26,15 @@ Page({
 		    isEmpty: true
 	    })
 		wx.hideTabBarRedDot({
+			index: 2
+		})
+	},
+	
+	notEmpty() {
+    	this.setData({
+		    isEmpty: false
+	    })
+		wx.showTabBarRedDot({
 			index: 2
 		})
 	}

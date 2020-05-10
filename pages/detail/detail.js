@@ -4,16 +4,18 @@ import {ShoppingWay} from "../../core/enum"
 import {SaleExplain} from "../../models/sale-explain"
 import {getWindowHeightRpx} from "../../utils/system"
 import {CartItem} from "../../models/cart-item"
+import {Cart} from "../../models/cart"
 
 Page({
 
     data: {
         spu: Object,
-        showReaml: false,
+        showRealm: false,
         orderWay: String,
         specs: Object,
         explain: Object,
-        h: String
+        h: String,
+	    cartItemCount: 0
     },
 
     onLoad: async function (options) {
@@ -27,6 +29,7 @@ Page({
             explain,
             h
         })
+	    this.updateCartItemCount()
     },
 	
 	/**
@@ -38,9 +41,19 @@ Page({
 		const skuCount = event.detail.skuCount
 		if (event.detail.orderWay === ShoppingWay.CART) {
 			const cartItem = new CartItem(chooseSku, skuCount)
-		} else {
-		
+			const cart = new Cart()
+			cart.addItem(cartItem)
+			this.updateCartItemCount()
 		}
+	},
+	
+	updateCartItemCount() {
+		const cart = new Cart()
+		
+		this.setData({
+			showRealm: false,
+			cartItemCount: cart.getCartItemCount()
+		})
 	},
 
     onGoToCart(event) {
@@ -57,7 +70,7 @@ Page({
 
     onAddToCart(event) {
         this.setData({
-            showReaml: true,
+            showRealm: true,
             orderWay: ShoppingWay.CART
         })
     },
@@ -70,7 +83,7 @@ Page({
 
     onBuy(event) {
         this.setData({
-            showReaml: true,
+            showRealm: true,
             orderWay: ShoppingWay.BUY
         })
     },

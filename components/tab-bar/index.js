@@ -1,16 +1,20 @@
+import {Cart} from "../../models/cart"
 
 Component({
 
     properties: {
-
+	    cartItemCount: Number
     },
-
-
+	
     data: {
-
+	   
     },
 
 
+	onShow: function() {
+ 
+	},
+	
     methods: {
         onGoToHome(event) {
             this.triggerEvent('gotohome')

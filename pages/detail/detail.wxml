@@ -31,11 +31,12 @@
     </view>
 </scroll-view>
 
-<l-popup content-align="bottom" show="{{showReaml}}">
+<l-popup content-align="bottom" show="{{showRealm}}">
     <s-realm bind:shopping="onShopping" bind:specChange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}"></s-realm>
 </l-popup>
 
 <s-tabbar class="tabbar"
+		  cart-item-count="{{cartItemCount}}"
           bind:gotohome="onGoToHome"
           bind:gotocart="onGoToCart"
           bind:addtocart="onAddToCart"
