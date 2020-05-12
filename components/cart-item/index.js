@@ -16,8 +16,8 @@ Component({
 	    soldOut: Boolean,
 	    discount: Boolean,
 	    specStr: String,
-	    stock: 0,
-	    skuCount: 0
+	    stock: Cart.SKU_MAX_COUNT,
+	    skuCount: 1,
     },
 	
 	observers: {
@@ -25,7 +25,6 @@ Component({
 			if (!cartItem) {
 				return
 			}
-			
 			const specStr = parseSpecValue(cartItem.sku.specs)
 			const discount = cartItem.sku.discount_price ? true : false
 			const soldOut = Cart.isSoldOut(cartItem)

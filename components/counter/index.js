@@ -21,6 +21,12 @@ Component({
     data: {
 
     },
+	
+	observers: {
+    	'count, min, max': function (count, min, max) {
+			console.log(count, min, max)
+	    }
+	},
 
     methods: {
         onOverStep(event) {

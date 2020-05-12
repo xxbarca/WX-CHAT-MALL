@@ -9,7 +9,7 @@
 			<view wx:if="{{!online}}" class="image-sold-out">
 				<text>下架</text>
 			</view>
-			<view wx:elif="{{!soldOut}}" class="image-sold-out">
+			<view wx:elif="{{soldOut}}" class="image-sold-out">
 				<text>售罄</text>
 			</view>
 			<view wx:elif="{{s.shortage(cartItem.sku.stock)}}" class="image-stock-pinch">
