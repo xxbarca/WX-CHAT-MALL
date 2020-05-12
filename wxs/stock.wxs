@@ -1,0 +1,7 @@
+function shortage(stock) {
+	return (stock < 10 && stock > 0)
+}
+
+module.exports = {
+	shortage: shortage
+}

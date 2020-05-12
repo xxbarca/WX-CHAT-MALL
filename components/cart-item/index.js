@@ -46,6 +46,17 @@ Component({
 
   
     methods: {
-
+	    onDelete: function (event) {
+			const skuId = this.properties.cartItem.skuId
+		    const cart = new Cart()
+		    cart.removeItem(skuId)
+		    this.setData({
+			    cartItem: null
+		    })
+		    
+		    this.triggerEvent("itemdelete", {
+		    	skuId
+		    })
+	    }
     }
 })
