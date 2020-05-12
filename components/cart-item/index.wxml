@@ -3,7 +3,7 @@
 <l-slide-view wx:if="{{cartItem}}" height="220" width="750" slideWidth="200">
     <view slot="left" class="container">
         <view class="checkbox">
-            <s-checkbox checked="{{cartItem.checked}}"></s-checkbox>
+            <s-checkbox bind:check="checkItem" checked="{{cartItem.checked}}"></s-checkbox>
         </view>
         <view class="sku-container">
             <view class="image-container">

@@ -1,7 +1,7 @@
 // components/cart-item/index.js
 import {parseSpecValue} from "../../utils/sku"
 import {Cart} from "../../models/cart"
-
+const cart = new Cart()
 Component({
   
     properties: {
@@ -48,7 +48,7 @@ Component({
     methods: {
 	    onDelete: function (event) {
 			const skuId = this.properties.cartItem.skuId
-		    const cart = new Cart()
+		    
 		    cart.removeItem(skuId)
 		    this.setData({
 			    cartItem: null
@@ -56,6 +56,15 @@ Component({
 		    
 		    this.triggerEvent("itemdelete", {
 		    	skuId
+		    })
+	    },
+	
+	    checkItem: function (event) {
+	    	const checked = event.detail.checked
+		    cart.checkItem(this.properties.cartItem.skuId)
+		    this.properties.cartItem.checked = checked
+		    this.triggerEvent("itemcheck", {
+			    skuId: this.properties.cartItem.skuId
 		    })
 	    }
     }

@@ -24,7 +24,6 @@ Page({
     },
 	onJumpToSpuList(event) {
 		const cid = event.detail.cid
-		console.log(cid)
 		wx.navigateTo({
 			url: `/pages/spu-list/spu-list?cid=${cid}&type=${SpuListType.SUB_CATEGORY}`
 		})

@@ -1,16 +1,32 @@
 // pages/cart/cart.js
 import {Cart} from "../../models/cart"
+import {getSystemSize} from "../../utils/system"
 
 Page({
 	
     data: {
 	    cartItems: [],
-	    isEmpty: false
+	    isEmpty: false,
+	    totalPrice: 0,
+	    totalSkuCount: 0,
+	    allChecked: true
     },
 	
-	onShow: function (options) {
+	onCheckAll: function(options) {
+	},
+	
+	onShow: async function (options) {
+    	const res = await getSystemSize()
 		const cart = new Cart()
 		const cartItems = cart.getAllCartItemFromLocal().items
+		// const allChecked = cartItems.find(item => {
+		// 	return item.checked === false
+		// })
+		// if (!allChecked) {
+		// 	this.setData({
+		// 		allChecked: true
+		// 	})
+		// }
 		if (cart.isEmpty()) {
 			this.empty()
 			return
@@ -19,6 +35,14 @@ Page({
 			cartItems
 		})
 		this.notEmpty()
+	},
+	
+	onItemCheck: function() {
+    	console.log(123)
+	},
+	
+	onDeleteItem: function() {
+    	console.log(234)
 	},
 	
 	empty() {
