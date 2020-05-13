@@ -4,6 +4,7 @@
                 cart-item="{{item}}"
                 bind:overflow="onOverflow"
                 bind:itemcheck="onSingleCheck"
+                bind:countfloat="onCountFloat"
                 bind:itemdelete="onDeleteItem"></s-cart-item>
 	</block>
 </view>

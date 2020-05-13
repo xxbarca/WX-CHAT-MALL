@@ -46,6 +46,15 @@ Component({
 
   
     methods: {
+	    onOutNumber: function() {},
+	
+	    onSelectCount: function(event) {
+	    	let newCount = event.detail.count
+			cart.replaceItemCount(this.properties.cartItem.skuId, newCount)
+		
+		    this.triggerEvent("countfloat")
+	    },
+	    
 	    onDelete: function (event) {
 			const skuId = this.properties.cartItem.skuId
 		    
