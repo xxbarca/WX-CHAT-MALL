@@ -3,7 +3,7 @@
 		<s-cart-item
                 cart-item="{{item}}"
                 bind:overflow="onOverflow"
-                bind:itemcheck="onItemCheck"
+                bind:itemcheck="onSingleCheck"
                 bind:itemdelete="onDeleteItem"></s-cart-item>
 	</block>
 </view>
