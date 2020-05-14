@@ -67,6 +67,19 @@ Page({
 		})
 	},
 	
+	/**
+	 * 结算
+	 * */
+	onSettle() {
+		if (this.data.totalSkuCount <= 0) {
+			return
+		}
+		
+		wx.navigateTo({
+			url: `/pages/order/order`
+		})
+	},
+	
 	onSingleCheck: function(event) {
 		this.isAllChecked()
 		this.refreshCartData()
@@ -78,7 +91,6 @@ Page({
 	},
 	
 	onCountFloat: function() {
-    	console.log(123)
     	this.refreshCartData()
 	},
 	

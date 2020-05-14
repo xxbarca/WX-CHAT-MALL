@@ -1,0 +1,3 @@
+<view>
+    <s-address bind:address="onChooseAddress"></s-address>
+</view>
