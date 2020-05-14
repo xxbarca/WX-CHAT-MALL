@@ -1,3 +1,4 @@
+import {accAdd, accMultiply} from "../utils/number"
 
 class Calculator {
 	
@@ -27,11 +28,11 @@ class Calculator {
 	push(cartItem) {
 		let partTotalPrice = 0
 		if (cartItem.sku.discount_price) {
-			partTotalPrice = cartItem.count * cartItem.sku.discount_price
+			partTotalPrice = accMultiply(cartItem.count, cartItem.sku.discount_price)
 		} else {
-			partTotalPrice = cartItem.count * cartItem.sku.price
+			partTotalPrice = accMultiply(cartItem.count, cartItem.sku.price)
 		}
-		this.totalPrice += partTotalPrice
+		this.totalPrice = accAdd(this.totalPrice, partTotalPrice)
 		this.totalCount += cartItem.count
 	}
 }

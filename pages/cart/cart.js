@@ -20,11 +20,19 @@ Page({
 		this.setData({
 			cartItems: cart.getAllCartItemFromLocal().items
 		})
+		this.refreshCartData()
 	},
 	
 	isAllChecked() {
 		this.setData({
 			allChecked: cart.isAllChecked()
+		})
+	},
+	
+	onLoad: async function() {
+    	const cartItem = await cart.getAllSkuFromServer()
+		this.setData({
+			cartItems: cartItem.items
 		})
 	},
 	
@@ -61,11 +69,12 @@ Page({
 	
 	onSingleCheck: function(event) {
 		this.isAllChecked()
+		this.refreshCartData()
 	},
 	
 	onDeleteItem: function(event) {
-    	const skuId = event.detail.skuId
 		this.isAllChecked()
+		this.refreshCartData()
 	},
 	
 	onCountFloat: function() {

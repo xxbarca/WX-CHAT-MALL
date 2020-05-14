@@ -1,3 +1,4 @@
+import {Sku} from "./sku"
 
 class Cart {
 	static SKU_MIN_COUNT = 1
@@ -17,10 +18,16 @@ class Cart {
 		return this
 	}
 	
+	/**
+	 * 本地缓存中获取数据
+	 * */
 	getAllCartItemFromLocal() {
 		return this._getCartData()
 	}
 	
+	/**
+	 * 从服务器加载缓存中存在的sku
+	 * */
 	async getAllSkuFromServer() {
 		const cartData = this._getCartData();
 		if (cartData.items.length === 0) {
