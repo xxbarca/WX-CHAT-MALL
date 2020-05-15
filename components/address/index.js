@@ -1,23 +1,80 @@
 // components/address/index.js
+import {Address} from "../../models/address"
+import {AuthAddress} from "../../core/enum"
+
 Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
+ 
+    properties: {
 
-  },
+    },
 
-  /**
-   * 组件的初始数据
-   */
-  data: {
-	  hasChosen: true
-  },
+    data: {
+	    hasChosen: false,
+	    address: Object,
+	    showDialog: false
+    },
+	
+	lifetimes: {
+    	attached() {
+    		const address = Address.getLocal()
+		    if (address) {
+		    	this.setData({
+				    address: address,
+				    hasChosen: true
+			    })
+		    }
+	    }
+	},
 
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
-  }
+    methods: {
+	    onDialogConfirm() {
+		    wx.openSetting({})
+	    },
+	    async onChooseAddress(event) {
+	    	const authStatus = await this.hasAuthorizedAddress()
+		    console.log(authStatus)
+		    if (authStatus === AuthAddress.DENY) {
+		    	this.setData({
+				    showDialog: true
+			    })
+			    return
+		    }
+	    	this.getUserAddress()
+	    },
+	    async getUserAddress() {
+	    	let res;
+	    	try {
+	    		res = await wx.chooseAddress({})
+			    Address.setLocal(res)
+		    } catch (e) {
+			   console.error(e)
+		    }
+		    if (res) {
+		    	this.setData({
+				    address: res,
+				    hasChosen: true
+			    })
+		    }
+	    },
+	    
+	    async hasAuthorizedAddress() {
+	    	const setting = await wx.getSetting({})
+		    const addressSetting = setting.authSetting['scope.address']
+		    
+		    // 未授权
+		    if (addressSetting === undefined) {
+		    	return AuthAddress.NOT_AUTH
+		    }
+		    
+		    // 拒绝授权
+		    if (addressSetting === false) {
+		        return AuthAddress.DENY
+		    }
+		    
+		    // 授权
+		    if (addressSetting === true) {
+		    	return AuthAddress.AUTHORIZED
+		    }
+	    }
+    }
 })

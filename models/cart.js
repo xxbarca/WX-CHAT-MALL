@@ -64,7 +64,6 @@ class Cart {
 		this._refreshStorage()
 	}
 	
-	
 	_refreshByServerData(serverData) {
 		const cartData = this._getCartData()
 		cartData.items.forEach(item => {
@@ -94,7 +93,6 @@ class Cart {
 		}
 		return item.count
 	}
-	
 	
 	getSkuIds() {
 		const cartData = this._getCartData()
@@ -175,7 +173,6 @@ class Cart {
 		return this._getCartData().items.length
 	}
 	
-	
 	addItem(newItem) {
 		if (this.beyondMaxCartItemCount()) {
 			throw new Error('超过购物车最大数量')
@@ -201,7 +198,6 @@ class Cart {
 	_refreshStorage() {
 		wx.setStorageSync(Cart.STORAGE_KEY, this._cartData)
 	}
-	
 	
 	_pushItem(newItem) {
 		const cartData = this._getCartData()
@@ -241,7 +237,6 @@ class Cart {
 		}
 	}
 	
-	
 	_getCartData() {
 		if (this._cartData !== null) {
 			return this._cartData
@@ -266,7 +261,6 @@ class Cart {
 		const cartData = this._getCartData()
 		return cartData.items.length >= Cart.CART_ITEM_MAX_COUNT;
 	}
-	
 }
 
 export {
