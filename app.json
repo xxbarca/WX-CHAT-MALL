@@ -68,6 +68,7 @@
     "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
     "s-spu-preview": "/components/spu-preview/index",
     "s-spu-preview-r": "/components/spu-preview-r/index",
-    "s-empty": "/components/empty/index"
+    "s-empty": "/components/empty/index",
+    "s-order-sku-item": "/components/order-sku-item/index"
   }
 }
