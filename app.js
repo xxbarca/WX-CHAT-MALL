@@ -1,5 +1,6 @@
 //app.js
 import {Cart} from "./models/cart"
+import {Token} from "./models/token"
 
 App({
 	onLaunch: function () {
@@ -10,7 +11,10 @@ App({
 				index: 2
 			})
 		}
+		const token = new Token()
+		token.verify()
   },
+	
 	globalData: {
 		userInfo: null
 	}
