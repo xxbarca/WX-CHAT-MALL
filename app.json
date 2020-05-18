@@ -6,7 +6,8 @@
     "pages/category/category",
     "pages/my/my",
     "pages/search/search",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/coupon/coupon"
   ],
   "window": {
     "backgroundTextStyle": "light",

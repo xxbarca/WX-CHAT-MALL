@@ -31,10 +31,18 @@ const OrderExceptionType = {
 	EMPTY: 'empty'
 }
 
+const CouponCenterType = {
+	// 通过首页活动进入
+	ACTIVITY: "activity",
+	// 分类方式进入(商品详情进入)
+	SPU_CATEGORY: "spu_category"
+}
+
 export {
     CellTagStatus,
     ShoppingWay,
 	SpuListType,
 	AuthAddress,
-	OrderExceptionType
+	OrderExceptionType,
+	CouponCenterType
 }
