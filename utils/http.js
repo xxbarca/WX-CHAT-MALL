@@ -5,7 +5,7 @@ import {codes} from "../config/exception-config"
 
 class Http {
 
-    static async request({url, data, method = 'GET'}) {
+    static async request({url, data, method = 'GET', refetch = true, throwError = false}) {
     	let res = null
         try {
     		res =  await promisic(wx.request) ({
@@ -20,7 +20,11 @@ class Http {
 		        }
 	        })
         } catch (e) {
+    		if (throwError) {
+    			throw new HttpException(-1, codes[-1])
+		    }
 	       Http.showError(-1)
+	        return null
         }
         const code = res.statusCode.toString()
 	    if (code.startsWith('2')) {
@@ -36,6 +40,9 @@ class Http {
 				    })
 			    }
 		    } else {
+	    		if (throwError) {
+	    			throw new HttpException(red.data.code, res.data.message, code)
+			    }
 	    		if (code === '404') {
 	    			if (res.data.code !== undefined) {
 	    				return null
