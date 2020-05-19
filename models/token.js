@@ -33,10 +33,8 @@ class Token {
 				type: 0
 			},
 			success(res) {
-				console.log(res)
 			}
 		})
-		console.log(res)
 		wx.setStorageSync("token", res.data.token)
 		return res.data.token
 	}
@@ -49,7 +47,6 @@ class Token {
 				token
 			}
 		})
-		console.log(res)
 	}
 	
 }

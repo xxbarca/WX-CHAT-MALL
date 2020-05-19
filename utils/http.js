@@ -23,13 +23,14 @@ class Http {
     		if (throwError) {
     			throw new HttpException(-1, codes[-1])
 		    }
-	       Http.showError(-1)
+	        Http.showError(-1)
 	        return null
         }
         const code = res.statusCode.toString()
 	    if (code.startsWith('2')) {
 	    	return res.data
 	    } else {
+	    	// token 过期
 	    	if (code === '401') {
 	    		// 二次重发
 			    if (data.refetch) {

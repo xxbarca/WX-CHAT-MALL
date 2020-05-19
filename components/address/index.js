@@ -32,7 +32,6 @@ Component({
 	    },
 	    async onChooseAddress(event) {
 	    	const authStatus = await this.hasAuthorizedAddress()
-		    console.log(authStatus)
 		    if (authStatus === AuthAddress.DENY) {
 		    	this.setData({
 				    showDialog: true
