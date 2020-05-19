@@ -35,6 +35,15 @@ class Http {
 					    method
 				    })
 			    }
+		    } else {
+	    		if (code === '404') {
+	    			if (res.data.code !== undefined) {
+	    				return null
+				    }
+	    			return res.data
+			    }
+	    		const error_code = res.data.code
+			    Http.showError(error_code, res.data)
 		    }
 	    }
         return res.data
