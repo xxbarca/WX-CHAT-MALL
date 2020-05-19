@@ -42,13 +42,14 @@ class Token {
 	}
 	
 	async _verifyFromServer(token) {
-		const res = await wx.request({
+		const res = await promisic(wx.request)({
 			url: this.verifyUrl,
 			method: "POST",
 			data: {
 				token
 			}
 		})
+		console.log(res)
 	}
 	
 }
