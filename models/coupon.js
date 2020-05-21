@@ -1,37 +1,24 @@
-import {Http} from "../../utils/http"
+import {Http} from "../utils/http"
 
 class Coupon {
+	
 	static async collectCoupon(cid) {
 		return await Http.request({
-			method: 'POST',
+			method: "POST",
 			url: `/coupon/collect/${cid}`,
 			throwError: true
 		})
-		// return await Http
 	}
-	
-	static getMyCoupons(status) {
-		return Http.request({
-			url: `coupon/myself/by/status/${status}`
-		})
-	}
-	
 	
 	static async getCouponsByCategory(cid) {
 		return await Http.request({
-			url: `coupon/by/category/${cid}`,
-		})
-	}
-	
-	static async getMySelfWithCategory() {
-		return Http.request({
-			url: `coupon/myself/available/with_category`
+			url: `/coupon/by/category/${cid}`,
 		})
 	}
 	
 	static async getTop2CouponsByCategory(cid) {
 		let coupons = await Http.request({
-			url: `coupon/by/category/${cid}`,
+			url: `/coupon/by/category/${cid}`,
 		})
 		if (coupons.length === 0) {
 			const otherCoupons = await Coupon.getWholeStoreCoupons()
@@ -60,10 +47,9 @@ class Coupon {
 		return []
 	}
 	
-	
 	static async getWholeStoreCoupons() {
 		return Http.request({
-			url: `coupon/whole_store`
+			url: `/coupon/whole_store`
 		})
 	}
 }

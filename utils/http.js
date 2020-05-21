@@ -2,6 +2,7 @@ import { config } from "../config/config"
 import { promisic } from "./util"
 import {Token} from "../models/token"
 import {codes} from "../config/exception-config"
+import {HttpException} from '../core/http-exception'
 
 class Http {
 
@@ -42,7 +43,7 @@ class Http {
 			    }
 		    } else {
 	    		if (throwError) {
-	    			throw new HttpException(red.data.code, res.data.message, code)
+	    			throw new HttpException(res.data.code, res.data.message, code)
 			    }
 	    		if (code === '404') {
 	    			if (res.data.code !== undefined) {

@@ -1,10 +1,11 @@
 // pages/detail/detail.js
 import {Spu} from "../../models/spu";
-import {ShoppingWay} from "../../core/enum"
+import {CouponCenterType, ShoppingWay} from "../../core/enum"
 import {SaleExplain} from "../../models/sale-explain"
 import {getWindowHeightRpx} from "../../utils/system"
 import {CartItem} from "../../models/cart-item"
 import {Cart} from "../../models/cart"
+import {Coupon} from "../../models/coupon"
 
 Page({
 
@@ -15,22 +16,33 @@ Page({
         specs: Object,
         explain: Object,
         h: String,
-	    cartItemCount: 0
+	    cartItemCount: 0,
+	    coupons: []
     },
 
     onLoad: async function (options) {
         const pid = options.pid
         const spu = await Spu.getDetail(pid)
+	    const coupons = await Coupon.getTop2CouponsByCategory(spu.category_id)
         const explain = await SaleExplain.getFixed()
         const windowHeight = await getWindowHeightRpx()
         const h = windowHeight - 100
         this.setData({
             spu,
             explain,
-            h
+            h,
+	        coupons
         })
 	    this.updateCartItemCount()
     },
+	
+	onGoToCouponCenter() {
+    	const type = CouponCenterType.SPU_CATEGORY
+		const cid = this.data.spu.category_id
+		wx.navigateTo({
+			url: `/pages/coupon/coupon?cid=${cid}&type=${type}`
+		})
+	},
 	
 	/**
 	 * 逻辑1: 立即购买
