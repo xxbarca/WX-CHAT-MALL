@@ -46,6 +46,12 @@ const CouponStatus = {
 	EXPIRED: 3
 }
 
+const CouponType = {
+	FULL_MINUS: 1, // 满减
+	FULL_OFF: 2, // 满折
+	NO_THRESHOLD_MINUS: 3 // 没有门槛
+}
+
 export {
     CellTagStatus,
     ShoppingWay,
@@ -53,5 +59,6 @@ export {
 	AuthAddress,
 	OrderExceptionType,
 	CouponCenterType,
-	CouponStatus
+	CouponStatus,
+	CouponType
 }

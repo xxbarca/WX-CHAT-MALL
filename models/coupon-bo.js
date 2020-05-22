@@ -1,3 +1,5 @@
+import {CouponType} from "../core/enum"
+
 class CouponBo {
 	
 	constructor(coupon) {
@@ -10,6 +12,7 @@ class CouponBo {
 		this.endTime = coupon.end_time
 		this.wholeStore = coupon.whole_store
 		this.title = coupon.title
+		this.satisfaction = false
 		this.categoryIds = coupon.categories.map(category => {
 			return category.id
 		})
@@ -25,7 +28,29 @@ class CouponBo {
 			let bottomListPrice = order.getTotalPrice()
 		} else {
 			// 不是全场券需按分类计算
+			categoryTotalPrice = order.getTotalPriceByCategoryIdList(this.categoryIds)
 		}
+		
+		let satisfaction = false
+		switch (this.type) {
+			case CouponType.FULL_MINUS:
+			case CouponType.FULL_OFF:
+				satisfaction = this._fullTypeCouponIsOk(categoryTotalPrice)
+				break
+			case CouponType.NO_THRESHOLD_MINUS:
+				satisfaction = true
+				break
+			default:
+				break
+		}
+		this.satisfaction = satisfaction
+	}
+	
+	_fullTypeCouponIsOk(categoryTotalPrice) {
+		if (categoryTotalPrice >= this.fullMoney) {
+			return true
+		}
+		return false
 	}
 	
 }
