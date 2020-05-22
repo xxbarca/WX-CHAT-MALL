@@ -14,6 +14,9 @@ Page({
 	    allChecked: false,
     },
 	
+	/**
+	 * 全选 true false
+	 * */
 	onCheckAll: function(options) {
     	const checked = options.detail.checked
 		cart.checkAll(checked)
@@ -23,6 +26,9 @@ Page({
 		this.refreshCartData()
 	},
 	
+	/**
+	 * 是否全部选中
+	 * */
 	isAllChecked() {
 		this.setData({
 			allChecked: cart.isAllChecked()
@@ -50,6 +56,9 @@ Page({
 		this.refreshCartData()
 	},
 	
+	/**
+	 * 刷新数据
+	 * */
 	refreshCartData() {
     	const checkedItems = cart.getCheckedItems()
 		const calculator = new Calculator(checkedItems)
@@ -80,11 +89,17 @@ Page({
 		})
 	},
 	
+	/**
+	 * 单选
+	 * */
 	onSingleCheck: function(event) {
 		this.isAllChecked()
 		this.refreshCartData()
 	},
 	
+	/**
+	 * 删除
+	 * */
 	onDeleteItem: function(event) {
 		this.isAllChecked()
 		this.refreshCartData()
@@ -111,5 +126,4 @@ Page({
 			index: 2
 		})
 	}
-	
 })

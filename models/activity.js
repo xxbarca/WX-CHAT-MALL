@@ -11,7 +11,6 @@ class Activity {
     }
     
     static async getActivityWithCoupon(activityName) {
-    	console.log(activityName)
     	return await Http.request({
 		    url: `/activity/name/${activityName}/with_coupon`
 	    })

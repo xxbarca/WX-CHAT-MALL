@@ -15,6 +15,8 @@ Page({
 		isOk: Boolean,
 		// 显示优惠券数据
 		couponBoList: [],
+		totalPrice: 0,
+		discountMoney: 0
 	},
 	
 	onLoad: async function () {
@@ -38,9 +40,13 @@ Page({
 		const couponBoList = this.packageCouponBoList(coupons, order)
 		this.setData({
 			orderItems: orderItems,
-			couponBoList: couponBoList
+			couponBoList: couponBoList,
+			totalPrice: order.getTotalPrice()
 		})
-		console.log(coupons)
+	},
+	
+	onChooseCoupon() {
+	
 	},
 	
 	// 同步最新的sku数据
@@ -60,7 +66,7 @@ Page({
 	packageCouponBoList(coupons, order) {
 		return coupons.map(coupon => {
 			const couponBo = new CouponBo(coupon)
-			// couponBo.meetCondition(order)
+			couponBo.meetCondition(order)
 			return couponBo
 		})
 	}

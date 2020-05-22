@@ -15,8 +15,17 @@ class CouponBo {
 		})
 	}
 	
+	/**
+	 * 计算当前优惠券是否满足当前订单
+	 * */
 	meetCondition(order) {
-	
+		let categoryTotalPrice = 0
+		if (this.wholeStore) {
+			// 全场券 通用
+			let bottomListPrice = order.getTotalPrice()
+		} else {
+			// 不是全场券需按分类计算
+		}
 	}
 	
 }
