@@ -12,7 +12,7 @@
 
     <view bind:tap="onGoToCouponCenter" class="coupon-container">
         <view class="coupon-left">
-            <block wx:for="{{coupons}}">
+            <block wx:key="index" wx:for="{{coupons}}">
                 <s-coupon-mini text="{{item.title}}"></s-coupon-mini>
             </block>
         </view>

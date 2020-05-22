@@ -4,13 +4,17 @@ import {Cart} from "../../models/cart"
 import {Sku} from "../../models/sku"
 import {OrderItem} from "../../models/order-item"
 import {Order} from "../../models/order"
+import {Coupon} from "../../components/models/coupon"
+import {CouponBo} from "../../models/coupon-bo"
 
 const cart = new Cart()
 
 Page({
 	data: {
 		orderItems: Array,
-		isOk: Boolean
+		isOk: Boolean,
+		// 显示优惠券数据
+		couponBoList: [],
 	},
 	
 	onLoad: async function () {
@@ -29,6 +33,14 @@ Page({
 			})
 			return
 		}
+		
+		const coupons = await Coupon.getMySelfWithCategory()
+		const couponBoList = this.packageCouponBoList(coupons, order)
+		this.setData({
+			orderItems: orderItems,
+			couponBoList: couponBoList
+		})
+		console.log(coupons)
 	},
 	
 	// 同步最新的sku数据
@@ -43,6 +55,14 @@ Page({
 			const count = cart.getSkuCountBySkuId(sku.id)
 			return new OrderItem(sku, count)
 		})
-		
+	},
+	
+	packageCouponBoList(coupons, order) {
+		return coupons.map(coupon => {
+			const couponBo = new CouponBo(coupon)
+			// couponBo.meetCondition(order)
+			return couponBo
+		})
 	}
+	
 })
