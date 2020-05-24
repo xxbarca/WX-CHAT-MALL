@@ -24,3 +24,17 @@
     </view>
     <s-coupon-picker bind:choose="onChooseCoupon" coupons="{{couponBoList}}"></s-coupon-picker>
 </view>
+
+<view class="bottom">
+    <view class="price-container">
+        <text>合计</text>
+        <l-price value="{{finalTotalPrice}}" color="#157658" size="30">
+
+        </l-price>
+    </view>
+    <l-button disabled="{{submitBtnDisable}}" bind:lintap="onSubmit" l-class="submit" bg-color="#157658"
+              height="88"
+              width="200">
+        提交订单
+    </l-button>
+</view>

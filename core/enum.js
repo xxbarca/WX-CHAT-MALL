@@ -52,6 +52,11 @@ const CouponType = {
 	NO_THRESHOLD_MINUS: 3 // 没有门槛
 }
 
+const CouponOperate = {
+	UNPICK: "unpick",
+	PICK: "pick"
+}
+
 export {
     CellTagStatus,
     ShoppingWay,
@@ -60,5 +65,6 @@ export {
 	OrderExceptionType,
 	CouponCenterType,
 	CouponStatus,
-	CouponType
+	CouponType,
+	CouponOperate
 }

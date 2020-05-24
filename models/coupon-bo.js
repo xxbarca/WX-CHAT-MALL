@@ -1,4 +1,5 @@
 import {CouponType} from "../core/enum"
+import {accMultiply, accSubtract} from "../utils/number"
 
 class CouponBo {
 	
@@ -44,6 +45,46 @@ class CouponBo {
 				break
 		}
 		this.satisfaction = satisfaction
+	}
+	
+	/**
+	 * @param orderPrice: 订单价格
+	 * @param couponObj:
+	 * */
+	static getFinalPrice(orderPrice, couponObj) {
+		if (couponObj.satisfaction === false) {
+			throw new Error("优惠券不满足使用条件")
+		}
+		let finalPrice = 0
+		switch (couponObj.type) {
+			case CouponType.FULL_MINUS:
+				return {
+					finalPrice: accSubtract(orderPrice, couponObj.minus),
+					discountMoney: couponObj.minus
+				}
+			case CouponType.FULL_OFF:
+				const actualPrice = accMultiply(orderPrice, couponObj.rate)
+				finalPrice = CouponBo.roundMoney(actualPrice)
+				const discountMoney = accSubtract(orderPrice, finalPrice)
+				return {
+					finalPrice: actualPrice,
+					discountMoney: discountMoney
+				}
+				
+			case CouponType.NO_THRESHOLD_MINUS:
+				finalPrice = accSubtract(orderPrice, couponObj.minus)
+				finalPrice = finalPrice < 0 ? 0: finalPrice
+				return {
+					finalPrice,
+					discountMoney: couponObj.minus
+				}
+				
+		}
+	}
+	
+	static roundMoney(money) {
+		const final = Math.ceil(money * 100) / 100
+		return final
 	}
 	
 	_fullTypeCouponIsOk(categoryTotalPrice) {
