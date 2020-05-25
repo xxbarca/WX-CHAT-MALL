@@ -22,6 +22,9 @@ Component({
 				    address: address,
 				    hasChosen: true
 			    })
+			    this.triggerEvent('address', {
+			    	address
+			    })
 		    }
 	    }
 	},
@@ -38,7 +41,7 @@ Component({
 			    })
 			    return
 		    }
-	    	this.getUserAddress()
+	    	await this.getUserAddress()
 	    },
 	    async getUserAddress() {
 	    	let res;
@@ -52,6 +55,10 @@ Component({
 		    	this.setData({
 				    address: res,
 				    hasChosen: true
+			    })
+			    Address.setLocal(res)
+			    this.triggerEvent('address', {
+				    address: res
 			    })
 		    }
 	    },

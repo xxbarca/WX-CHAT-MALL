@@ -7,6 +7,8 @@ import {Order} from "../../models/order"
 import {Coupon} from "../../components/models/coupon"
 import {CouponBo} from "../../models/coupon-bo"
 import {CouponOperate, CouponType} from "../../core/enum"
+import {showToast} from "../../utils/ui"
+import {OrderPost} from "../../models/order-post"
 
 const cart = new Cart()
 
@@ -20,7 +22,9 @@ Page({
 		discountMoney: 0,
 		finalTotalPrice: 0,
 		order: null,
-		currentCouponId: null
+		currentCouponId: null,
+		address: null,
+		submitBtnDisable: false
 	},
 
 	onLoad: async function () {
@@ -71,8 +75,52 @@ Page({
 		}
 
 	},
+	
+	onChooseAddress(event) {
+		const address = event.detail.address
+		this.setData({
+			address: address
+		})
+	},
 
-	onSubmit() {},
+	onSubmit() {
+		if (!this.data.address) {
+			showToast("请选择收获地址")
+			return
+		}
+		this.disableSubmitBtn()
+		const order = this.data.order
+		const orderPost = new OrderPost(
+			this.data.totalPrice,
+			this.data.finalTotalPrice,
+			this.data.currentCouponId,
+			order.getOrderSkuInfoList(),
+			this.data.address
+		)
+		
+		console.log(orderPost)
+	},
+	
+	async postOrder(orderPost) {
+		try {
+			const serverOrder = await Order.postOrderToServer(orderPost)
+			if (serverOrder) {
+				console.log(serverOrder)
+				return serverOrder.id
+			}
+		} catch (e) {
+		
+		}
+	},
+	
+	/**
+	 * 防止用户多次点击
+	 * */
+	disableSubmitBtn() {
+		this.setData({
+			submitBtnDisable: true
+		})
+	},
 
 	// 同步最新的sku数据
 	async getCartOrderItems(skuIds) {
