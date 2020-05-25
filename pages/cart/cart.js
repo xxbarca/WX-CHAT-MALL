@@ -1,6 +1,7 @@
 
 import {Cart} from "../../models/cart"
 import {Calculator} from "../../models/calculator"
+import {ShoppingWay} from "../../core/enum"
 
 const cart = new Cart()
 
@@ -24,6 +25,17 @@ Page({
 			cartItems: cart.getAllCartItemFromLocal().items
 		})
 		this.refreshCartData()
+	},
+	
+	//
+	removeCheckedItems() {
+		const cartData = this._getCartData()
+		for (let i = 0; i < cartData.items.length; i++) {
+			if (cartData.items[i].checked) {
+				cartData.items.splice(i, 1)
+			}
+		}
+		this._refreshStorage()
 	},
 	
 	/**
@@ -85,7 +97,7 @@ Page({
 		}
 		
 		wx.navigateTo({
-			url: `/pages/order/order`
+			url: `/pages/order/order?way=${ShoppingWay.CART}`
 		})
 	},
 	

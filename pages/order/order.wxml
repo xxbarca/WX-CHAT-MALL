@@ -38,3 +38,9 @@
         提交订单
     </l-button>
 </view>
+
+<l-dialog content-color="#333333" type="alert" title="订单生成失败" l-confirm-class="dialog-confirm" show="{{orderFail}}" content="{{orderFailMsg}}">
+
+</l-dialog>
+
+<l-loading></l-loading>

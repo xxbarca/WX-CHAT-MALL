@@ -6,7 +6,7 @@ import {OrderItem} from "../../models/order-item"
 import {Order} from "../../models/order"
 import {Coupon} from "../../components/models/coupon"
 import {CouponBo} from "../../models/coupon-bo"
-import {CouponOperate, CouponType} from "../../core/enum"
+import {CouponOperate, CouponType, ShoppingWay} from "../../core/enum"
 import {showToast} from "../../utils/ui"
 import {OrderPost} from "../../models/order-post"
 
@@ -24,12 +24,16 @@ Page({
 		order: null,
 		currentCouponId: null,
 		address: null,
-		submitBtnDisable: false
+		submitBtnDisable: false,
+		orderFailMsg: '',
+		orderFail: false,
+		shoppingWay: ShoppingWay.BUY
 	},
 
-	onLoad: async function () {
+	onLoad: async function (options) {
 		let orderItems;
 		let localItemCount
+		const shoppingWay = options.way
 		const skuIds = cart.getCheckedSkuIds()
 		orderItems = await this.getCartOrderItems(skuIds)
 		localItemCount = skuIds.length
@@ -51,7 +55,8 @@ Page({
 			couponBoList: couponBoList,
 			totalPrice: order.getTotalPrice(),
 			finalTotalPrice: order.getTotalPrice(),
-			order
+			order,
+			shoppingWay
 		})
 	},
 
@@ -83,7 +88,7 @@ Page({
 		})
 	},
 
-	onSubmit() {
+	async onSubmit() {
 		if (!this.data.address) {
 			showToast("请选择收获地址")
 			return
@@ -98,8 +103,17 @@ Page({
 			this.data.address
 		)
 		
-		console.log(orderPost)
+		const oid = await this.postOrder(orderPost)
+		if (!oid) {
+			this.enableSubmitBtn()
+			return
+		}
+		if (this.data.shoppingWay === ShoppingWay.CART) {
+			cart.removeCheckedItems()
+		}
+		
 	},
+	
 	
 	async postOrder(orderPost) {
 		try {
@@ -109,7 +123,10 @@ Page({
 				return serverOrder.id
 			}
 		} catch (e) {
-		
+			this.setData({
+				orderFail: true,
+				orderFailMsg: e.message
+			})
 		}
 	},
 	
@@ -119,6 +136,12 @@ Page({
 	disableSubmitBtn() {
 		this.setData({
 			submitBtnDisable: true
+		})
+	},
+	
+	enableSubmitBtn() {
+		this.setData({
+			submitBtnDisable: false
 		})
 	},
 
