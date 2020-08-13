@@ -47,9 +47,9 @@ Page({
 			})
 			return
 		}
-
 		const coupons = await Coupon.getMySelfWithCategory()
 		const couponBoList = this.packageCouponBoList(coupons, order)
+		
 		this.setData({
 			orderItems: orderItems,
 			couponBoList: couponBoList,
@@ -103,7 +103,9 @@ Page({
 			this.data.address
 		)
 		
+		console.log(orderPost)
 		const oid = await this.postOrder(orderPost)
+		
 		if (!oid) {
 			this.enableSubmitBtn()
 			return
@@ -111,6 +113,8 @@ Page({
 		if (this.data.shoppingWay === ShoppingWay.CART) {
 			cart.removeCheckedItems()
 		}
+		
+		// 支付
 		
 	},
 	

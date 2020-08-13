@@ -19,14 +19,14 @@ class Paging {
     }
 
     async getMoreData() {
-        if(!this.moreData){
+	    if(!this.moreData){
             return
         }
         if(!this._getLocker()){
             return
         }
         const data = await this._actualGetData()
-        this._releaseLocker()
+	    this._releaseLocker()
         return data
     }
 

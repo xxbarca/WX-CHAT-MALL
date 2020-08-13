@@ -55,6 +55,9 @@ Component({
 		    this.triggerEvent("countfloat")
 	    },
 	    
+	    /**
+	     * 删除
+	     * */
 	    onDelete: function (event) {
 			const skuId = this.properties.cartItem.skuId
 		    
@@ -68,6 +71,9 @@ Component({
 		    })
 	    },
 	
+	    /**
+	     * 选择
+	     * */
 	    checkItem: function (event) {
 	    	const checked = event.detail.checked
 		    cart.checkItem(this.properties.cartItem.skuId)

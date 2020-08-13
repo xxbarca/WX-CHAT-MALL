@@ -11,6 +11,11 @@ Component({
 	},
 	
 	methods: {
-
+		onCellTap(event) {
+			const pid = event.currentTarget.dataset.id
+			wx.navigateTo({
+				url: `/pages/detail/detail?pid=${pid}`
+			})
+		}
 	}
 })

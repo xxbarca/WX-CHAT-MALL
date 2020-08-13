@@ -92,9 +92,10 @@ class Order {
 	}
 	
 	getOrderSkuInfoList() {
+		
 		return this.orderItems.map(item => {
 			return {
-				id: item.id,
+				id: item.skuId,
 				count: item.count
 			}
 		})

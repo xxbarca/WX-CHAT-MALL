@@ -47,11 +47,11 @@ Component({
 	    	let res;
 	    	try {
 	    		res = await wx.chooseAddress({})
-			    Address.setLocal(res)
+			    // Address.setLocal(res)
 		    } catch (e) {
 			   console.error(e)
 		    }
-		    if (res) {
+		    if (res) { // 用户没有拒绝
 		    	this.setData({
 				    address: res,
 				    hasChosen: true

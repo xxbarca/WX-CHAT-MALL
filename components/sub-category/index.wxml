@@ -3,7 +3,7 @@
     <text class="title">- 全部分类 -</text>
 
     <l-grid l-class="inner-container">
-        <block wx:for="{{categories}}">
+        <block wx:key="index" wx:for="{{categories}}">
             <l-grid-item bind:linitemtap="onTapGridItem" key="{{index}}" slot="{{index}}">
                 <view class="grid-item">
                     <image mode="aspectFit" class="img" src="{{item.img}}"></image>
