@@ -26,7 +26,7 @@ class CouponBo {
 		let categoryTotalPrice = 0
 		if (this.wholeStore) {
 			// 全场券 通用
-			let bottomListPrice = order.getTotalPrice()
+			categoryTotalPrice = order.getTotalPrice()
 		} else {
 			// 不是全场券需按分类计算
 			categoryTotalPrice = order.getTotalPriceByCategoryIdList(this.categoryIds)

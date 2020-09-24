@@ -10,7 +10,6 @@ Component({
 	
 	observers: {
     	'coupons': function (coupons) {
-    		console.log(coupons)
 			if(coupons.length === 0) {
 				return
 			}

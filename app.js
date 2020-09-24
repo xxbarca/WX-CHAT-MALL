@@ -12,7 +12,7 @@ App({
 			})
 		}
 		const token = new Token()
-		token.verify()
+		token.verify().then(res => {})
   },
 	
 	globalData: {

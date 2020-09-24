@@ -60,6 +60,10 @@ Page({
 		})
 	},
 
+	/**
+	 * 选择优惠券
+	 * @param event
+	 * */
 	onChooseCoupon(event) {
 		const couponObj = event.detail.coupon
 		
@@ -81,6 +85,10 @@ Page({
 
 	},
 	
+	/**
+	 * 选择地址
+	 * @param event
+	 * */
 	onChooseAddress(event) {
 		const address = event.detail.address
 		this.setData({
@@ -88,6 +96,9 @@ Page({
 		})
 	},
 
+	/**
+	 * 提交
+	 * */
 	async onSubmit() {
 		if (!this.data.address) {
 			showToast("请选择收获地址")
@@ -103,7 +114,6 @@ Page({
 			this.data.address
 		)
 		
-		console.log(orderPost)
 		const oid = await this.postOrder(orderPost)
 		
 		if (!oid) {
@@ -149,13 +159,20 @@ Page({
 		})
 	},
 
-	// 同步最新的sku数据
+	/**
+	 * 同步最新的sku数据
+	 * @param skuIds
+	 * */
 	async getCartOrderItems(skuIds) {
 		const skus = await Sku.getSkusByIds(skuIds)
 		const orderItems = this.packageOrderItems(skus)
 		return orderItems
 	},
 
+	/**
+	 * sku -> OrderItem
+	 * @param skus sku列表
+	 * */
 	packageOrderItems(skus) {
 		return skus.map(sku => {
 			const count = cart.getSkuCountBySkuId(sku.id)
@@ -163,6 +180,11 @@ Page({
 		})
 	},
 
+	/**
+	 * coupon -> couponBO
+	 * @param coupons 优惠券列表
+	 * @param order 订单
+	 * */
 	packageCouponBoList(coupons, order) {
 		return coupons.map(coupon => {
 			const couponBo = new CouponBo(coupon)

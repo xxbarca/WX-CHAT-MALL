@@ -47,6 +47,10 @@ class Token {
 				token
 			}
 		})
+		const valid = res.data.is_valid
+		if (!valid) {
+			return this.getTokenFromServer()
+		}
 	}
 	
 }
