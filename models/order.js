@@ -13,6 +13,9 @@ class Order {
 		this.localItemCount = localItemCount
 	}
 	
+	/**
+	 * 校验orderItem是否合法
+	 * */
 	checkOrderIsOk() {
 		this.orderItems.forEach(item => {
 			item.isOK()
@@ -24,13 +27,19 @@ class Order {
 		this._containNotOnSaleItem()
 	}
 	
+	/**
+	 * 当前订单是否是空的订单
+	 * */
 	_emptyOrder() {
 		if (this.orderItems.length === 0) {
 			throw new OrderException("订单中没有任何商品", OrderExceptionType.EMPTY)
 		}
 	}
 	
-	//
+	/**
+	 * 按照分类获取总价
+	 * @param categoryIdList
+	 * */
 	getTotalPriceByCategoryIdList(categoryIdList) {
 		if (categoryIdList.length === 0) {
 			return 0

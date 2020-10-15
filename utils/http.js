@@ -28,7 +28,7 @@ class Http {
 	        return null
         }
         const code = res.statusCode.toString()
-	    if (code.startsWith('2')) {
+	    if (code.startsWith('2')) { // => 请求成功
 	    	return res.data
 	    } else {
 	    	// token 过期

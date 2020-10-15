@@ -55,13 +55,13 @@ class FenceGroup {
 
     initFences() {
         const martix = this._createMatrix(this.skuList)
-        //
+	    //
         const fences = []
         const AT = martix.transpose()
-        AT.forEach(r => {
+	    AT.forEach(r => {
             const fence = new Fence(r)
             fence.init()
-            if (this._hasSketchFencee() && this._isSketchFence(fence.id)) {
+            if (this._hasSketchFence() && this._isSketchFence(fence.id)) {
                 fence.setFenceSketch(this.skuList)
             }
             fences.push(fence)
@@ -71,7 +71,7 @@ class FenceGroup {
 
     // 是否有可视规格
     // sketch_spec_id
-    _hasSketchFencee() {
+    _hasSketchFence() {
         return this.spu.sketch_spec_id ? true : false
     }
 

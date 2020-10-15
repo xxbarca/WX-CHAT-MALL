@@ -2,6 +2,7 @@
 
 <scroll-view scroll-y class="container">
     <view class="inner-container">
+<!--        -->
         <view class="sku-preview">
             <image src="{{previewImg}}" class="sku-img" />
             <view class="sku-description">
@@ -34,9 +35,11 @@
             </view>
         </view>
         <view class="hr"></view>
+<!--        -->
         <block wx:key="index" wx:for="{{fences}}">
             <s-fence x="{{index}}" bind:celltap="onCelltap" fence="{{item}}"></s-fence>
         </block>
+<!--        -->
         <view class="counter-container">
             <text>购买数量</text>
             <s-counter bind:lintap="onSelectCount"></s-counter>

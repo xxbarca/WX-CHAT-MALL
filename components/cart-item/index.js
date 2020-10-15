@@ -40,7 +40,6 @@ Component({
 				skuCount,
 				stock
 			})
-			
 		}
 	},
 

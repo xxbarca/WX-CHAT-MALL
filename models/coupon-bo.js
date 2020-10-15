@@ -67,7 +67,7 @@ class CouponBo {
 				finalPrice = CouponBo.roundMoney(actualPrice)
 				const discountMoney = accSubtract(orderPrice, finalPrice)
 				return {
-					finalPrice: actualPrice,
+					finalPrice: finalPrice,
 					discountMoney: discountMoney
 				}
 				

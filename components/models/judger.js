@@ -8,6 +8,7 @@ class Judger {
 
     fenceGroup
     pathDict = []
+	// 记录用户选择的规格值
     skuPending
 
     constructor(fenceGroup) {
@@ -30,32 +31,40 @@ class Judger {
 
     //
     getMissingKeys() {
-        const missingkeysIndex = this.skuPending.getMissingSpecKeysIndex()
-        return missingkeysIndex.map(i => {
+        const missingKeysIndex = this.skuPending.getMissingSpecKeysIndex()
+        return missingKeysIndex.map(i => {
             return this.fenceGroup.fences[i].title
         })
     }
 
-    // 默认规格
+    /**
+     * 设置默认规格
+     * */
     _initSkuPending() {
         const specsLength = this.fenceGroup.fences.length
         this.skuPending = new SkuPending(specsLength)
+	    // 查看是否有默认的Sku
         const defaultSku = this.fenceGroup.getDefaultSku()
         if (!defaultSku) {
             return
         }
-        this.skuPending.init(defaultSku)
+	    this.skuPending.init(defaultSku)
         this._initSelectedCell()
         this.judge(null, null, null, true)
     }
 
-    // 设置默认选中的cell
+    /**
+     * 设置默认选中的cell
+     * */
     _initSelectedCell() {
         this.skuPending.pending.forEach(cell => {
             this.fenceGroup.setCellStatusById(cell.id, CellTagStatus.SELECTED)
         })
     }
 
+    /**
+     * 计算潜在路径
+     * */
     _initPathDict() {
         this.fenceGroup.spu.sku_list.forEach(s => {
             const skuCode = new SkuCode(s.code)
@@ -70,7 +79,7 @@ class Judger {
         // 是否初始化的时候调用
         if (!isInit) {
             // 用户不点击不存在 cell, x, y, 用户点击才需要调用
-            this._changeCurrentCellStatue(cell, x, y)
+            this._changeCurrentCellStatus(cell, x, y)
         }
         this.fenceGroup.eachCell((cell, x, y) => {
             const path = this._findPotentialPath(cell, x, y)
@@ -98,7 +107,9 @@ class Judger {
         return this.pathDict.includes(path)
     }
 
-    // TODO
+    /**
+     * 获取cell潜在路径
+     * */
     _findPotentialPath(cell, x, y) {
         const joiner = new Joiner("#")
         for (let i = 0; i < this.fenceGroup.fences.length; i++) {
@@ -113,10 +124,9 @@ class Judger {
             } else {
                 // 非当前行
                 if (selected) {
+                	// 有已选元素则添加, 否则什么也不做
                     const selectedCellCode = this._getCellCode(selected.spec)
                     joiner.join(selectedCellCode)
-                } else {
-
                 }
             }
         }
@@ -127,7 +137,7 @@ class Judger {
         return spec.key_id + '-' + spec.value_id
     }
 
-    _changeCurrentCellStatue(cell, x, y) {
+    _changeCurrentCellStatus(cell, x, y) {
         if (cell.status === CellTagStatus.WAITING) {
             // this.fenceGroup.fences[x].cells[y].status = CellTagStatus.SELECTED
             this.fenceGroup.setCellStatusByXY(x, y, CellTagStatus.SELECTED)

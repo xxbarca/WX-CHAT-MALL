@@ -34,9 +34,19 @@ Page({
 		let orderItems;
 		let localItemCount
 		const shoppingWay = options.way
-		const skuIds = cart.getCheckedSkuIds()
-		orderItems = await this.getCartOrderItems(skuIds)
-		localItemCount = skuIds.length
+		
+		if (shoppingWay === ShoppingWay.BUY) {
+			const skuId = options.sku_id
+			const count = options.count
+			orderItems = await this.getSingleOrderItems(skuId, count)
+			localItemCount = 1
+		} else {
+			const skuIds = cart.getCheckedSkuIds()
+			orderItems = await this.getCartOrderItems(skuIds)
+			localItemCount = skuIds.length
+		}
+		
+		
 		const order = new Order(orderItems, localItemCount)
 
 		try {
@@ -49,7 +59,6 @@ Page({
 		}
 		const coupons = await Coupon.getMySelfWithCategory()
 		const couponBoList = this.packageCouponBoList(coupons, order)
-		
 		this.setData({
 			orderItems: orderItems,
 			couponBoList: couponBoList,
@@ -58,6 +67,11 @@ Page({
 			order,
 			shoppingWay
 		})
+	},
+	
+	async getSingleOrderItems(skuId, count) {
+		const skus = await Sku.getSkusByIds(skuId)
+		return [new OrderItem(skus[0], count)]
 	},
 
 	/**
@@ -133,7 +147,6 @@ Page({
 		try {
 			const serverOrder = await Order.postOrderToServer(orderPost)
 			if (serverOrder) {
-				console.log(serverOrder)
 				return serverOrder.id
 			}
 		} catch (e) {

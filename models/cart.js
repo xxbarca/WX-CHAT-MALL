@@ -1,8 +1,10 @@
 import {Sku} from "./sku"
 
 class Cart {
+	// => 同一个sku数量
 	static SKU_MIN_COUNT = 1
 	static SKU_MAX_COUNT = 77
+	// => 不同sku数量
 	static CART_ITEM_MAX_COUNT = 77
 	static STORAGE_KEY = 'cart'
 	
@@ -34,12 +36,16 @@ class Cart {
 			return null
 		}
 		const skuIds = this.getSkuIds()
+		// 将从服务器取到的数据更新到缓存中
 		const serverData = await Sku.getSkusByIds(skuIds)
 		this._refreshByServerData(serverData)
 		this._refreshStorage()
 		return this._getCartData()
 	}
 	
+	/**
+	 * 获取选中的sku的ID
+	 * */
 	getCheckedSkuIds() {
 		const cartData = this._getCartData()
 		if (cartData.items.length === 0) {
@@ -85,6 +91,10 @@ class Cart {
 		}
 	}
 	
+	/**
+	 * 根据skuId获取对应的数量
+	 * @param skuId
+	 * */
 	getSkuCountBySkuId(skuId) {
 		const cartData = this._getCartData()
 		const item = cartData.items.find(item => item.skuId === skuId)
@@ -102,6 +112,9 @@ class Cart {
 		return cartData.items.map(item => item.skuId)
 	}
 	
+	/**
+	 * 更新cartItem的数量
+	 * */
 	replaceItemCount(skuId, newCount) {
 		const oldItem = this.findEqualItem(skuId)
 		if (!oldItem) {
@@ -119,6 +132,9 @@ class Cart {
 		this._refreshStorage()
 	}
 	
+	/**
+	 * 获取所有被勾选的cartItem
+	 * */
 	getCheckedItems() {
 		const cartItems = this._getCartData().items
 		const checkedCartItems = []
@@ -136,6 +152,9 @@ class Cart {
 		this._refreshStorage()
 	}
 	
+	/**
+	 * 判断是否全部被选中
+	 * */
 	isAllChecked() {
 		let allChecked = true
 		const cartItems = this._getCartData().items
@@ -148,6 +167,10 @@ class Cart {
 		return allChecked
 	}
 	
+	/**
+	 * 全选 正选 反选
+	 * @param checked
+	 * */
 	checkAll(checked) {
 		const cartData = this._getCartData()
 		cartData.items.forEach(item => {
@@ -173,6 +196,10 @@ class Cart {
 		return this._getCartData().items.length
 	}
 	
+	/**
+	 * 添加cartItem
+	 * @param newItem
+	 * */
 	addItem(newItem) {
 		if (this.beyondMaxCartItemCount()) {
 			throw new Error('超过购物车最大数量')
@@ -181,6 +208,10 @@ class Cart {
 		this._refreshStorage()
 	}
 	
+	/**
+	 * 移除cartItem
+	 * @param skuId
+	 * */
 	removeItem(skuId) {
 		const oldItemIndex = this._findEqualItemIndex(skuId)
 		const cartData = this._getCartData()
@@ -188,6 +219,10 @@ class Cart {
 		this._refreshStorage()
 	}
 	
+	/**
+	 * 查找相等的cartItem
+	 * @param skuId
+	 * */
 	_findEqualItemIndex(skuId) {
 		const cartData = this._getCartData()
 		return cartData.items.findIndex(item => {
@@ -195,6 +230,9 @@ class Cart {
 		})
 	}
 	
+	/**
+	 * 刷新缓存
+	 * */
 	_refreshStorage() {
 		wx.setStorageSync(Cart.STORAGE_KEY, this._cartData)
 	}
@@ -249,6 +287,9 @@ class Cart {
 		return cartData
 	}
 	
+	/**
+	 * 初始化缓存
+	 * */
 	_initCartDataStorage() {
 		const cartData = {
 			items: []
@@ -257,6 +298,9 @@ class Cart {
 		return cartData
 	}
 	
+	/**
+	 * 是否超出数量限制
+	 * */
 	beyondMaxCartItemCount() {
 		const cartData = this._getCartData()
 		return cartData.items.length >= Cart.CART_ITEM_MAX_COUNT;

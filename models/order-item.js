@@ -3,9 +3,13 @@ import {accMultiply} from "../utils/number"
 import {OrderExceptionType} from "../core/enum"
 import {OrderException} from "../core/order-exception"
 
+/**
+ *  对应SKU
+ * */
 class OrderItem {
 	count = 0
 	singleFinalPrice
+	// finalPrice = singleFinalPrice * count
 	finalPrice
 	online
 	title

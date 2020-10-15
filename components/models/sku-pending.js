@@ -23,7 +23,9 @@ class SkuPending {
         }
     }
 
-    // 检查是否选择了完整的sku
+    /**
+     * 检查是否选择了完整的sku
+     * */
     isIntact() {
         // if (this.size !== this.pending.length) {
         //     return false
@@ -36,7 +38,9 @@ class SkuPending {
         return true
     }
 
-    // 规格值
+    /**
+     * 已选 规格值
+     * */
     getCurrentSpecValues() {
         const values = this.pending.map(cell => {
             if (cell) {
@@ -46,10 +50,12 @@ class SkuPending {
         return values
     }
 
-    // 规格值
+    /**
+     * 已选规格名
+     * */
     getMissingSpecKeysIndex() {
         const keysIndex = []
-        for (let i = 0; i < this.size; i++) {
+	    for (let i = 0; i < this.size; i++) {
             if (!this.pending[i]) {
                 keysIndex.push(i)
             }
@@ -79,7 +85,7 @@ class SkuPending {
         this.pending[x] = null
     }
 
-    // 
+    //
     findSelectedCellByX(x) {
         return this.pending[x]
     }

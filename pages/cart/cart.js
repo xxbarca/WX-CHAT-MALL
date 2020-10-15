@@ -117,6 +117,9 @@ Page({
 		this.refreshCartData()
 	},
 	
+	/**
+	 * 变更数量
+	 * */
 	onCountFloat: function() {
     	this.refreshCartData()
 	},

@@ -13,7 +13,7 @@ Component({
 			if(coupons.length === 0) {
 				return
 			}
-			const couponsView = this.convertToView(coupons)
+		    const couponsView = this.convertToView(coupons)
 		    const satisfactionCount = this.getSatisfactionCount(coupons)
 		    this.setData({
 			    _coupons: couponsView,
@@ -69,6 +69,10 @@ Component({
 		    })
 	    },
 	
+	    /**
+	     * 选择还是取消使用优惠券
+	     * @param currentKey
+	     * */
 	    decidePickOrUnPick(currentKey) {
 	    	if (currentKey === null) {
 	    		return CouponOperate.UNPICK

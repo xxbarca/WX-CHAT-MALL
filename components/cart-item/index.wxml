@@ -49,6 +49,7 @@
                     </s-counter>
                 </view>
             </view>
+<!--            蒙层-->
             <view wx:if="{{soldOut || !online}}" class="sold-out"></view>
         </view>
     </view>

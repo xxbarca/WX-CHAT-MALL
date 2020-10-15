@@ -49,13 +49,21 @@ Page({
 	 * 逻辑2: 加入购物车
 	 * */
 	onShopping(event) {
-    	const chooseSku = event.detail.sku
+		const chooseSku = event.detail.sku
 		const skuCount = event.detail.skuCount
+		// => 加入购物车
 		if (event.detail.orderWay === ShoppingWay.CART) {
 			const cartItem = new CartItem(chooseSku, skuCount)
 			const cart = new Cart()
 			cart.addItem(cartItem)
 			this.updateCartItemCount()
+		}
+		
+		// => 立即购买
+		if (event.detail.orderWay === ShoppingWay.BUY) {
+			wx.navigateTo({
+				url: `/pages/order/order?sku_id=${chooseSku.id}&count=${skuCount}&way=${ShoppingWay.BUY}`
+			})
 		}
 	},
 	

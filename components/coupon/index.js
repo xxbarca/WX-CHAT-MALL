@@ -35,7 +35,9 @@ Component({
 	},
 	
 	methods: {
+		// 领取优惠券
 		async onGetCoupon(event) {
+			// 如果已经领取则跳转页面
 			if (this.data.userCollected) {
 				wx.switchTab({
 					url: `/pages/category/category`
@@ -63,6 +65,7 @@ Component({
 			}
 		},
 		
+		// 设置优惠券已领取
 		setUserCollected() {
 			this.setData({
 				_status: CouponStatus.AVAILABLE,
