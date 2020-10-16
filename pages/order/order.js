@@ -96,7 +96,6 @@ Page({
 				currentCouponId: null
 			})
 		}
-
 	},
 	
 	/**

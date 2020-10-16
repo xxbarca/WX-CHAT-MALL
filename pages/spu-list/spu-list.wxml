@@ -1,2 +1,20 @@
-<!--pages/spu-list/spu-list.wxml-->
-<text>pages/spu-list/spu-list.wxml</text>
+<wxs src="../../wxs/price.wxs" module="p"></wxs>
+
+<view class="empty-container" wx:if="{{isEmpty}}">
+    <s-empty show text="该分类暂时没有商品"></s-empty>
+</view>
+
+<view wx:if="{{!isEmpty}}">
+    <block wx:for="{{spuData.list}}">
+        <view bind:tap="onGoToDetail" data-id="{{item.id}}" class="item-container">
+            <image src="{{item.img}}"></image>
+            <view class="desc">
+                <text class="title">{{item.title}}</text>
+                <text wx:if="{{item.tags}}">{{item.tags}}</text>
+                <view class="price-row">
+
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

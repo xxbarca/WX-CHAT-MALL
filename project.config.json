@@ -64,7 +64,7 @@
         {
           "name": "有规格",
           "pathName": "pages/detail/detail",
-          "query": "pid=3",
+          "query": "pid=2",
           "scene": null
         },
         {
@@ -114,6 +114,12 @@
           "name": "pages/coupon/coupon",
           "pathName": "pages/coupon/coupon",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/spu-list/spu-list",
+          "pathName": "pages/spu-list/spu-list",
+          "query": "pid=32",
           "scene": null
         }
       ]

@@ -14,6 +14,12 @@ class Spu {
             url: `/spu/id/${id}/detail`
         })
     }
+    
+    static getByCategory(id, start = 0, count = 10) {
+    	return Http.request({
+		    url: `/spu/by/category/${id}?start=${start}&count=${count}`
+	    })
+    }
 }
 
 export {
