@@ -135,6 +135,18 @@ page{
     background-color: #ffffff;
 }
 
+.author {
+    width: 100%;
+    height: 10rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F3F4F6;
+    color: #C0C1C3;
+    margin-top: 20rpx;
+    margin-bottom: 100rpx;
+}
+
 .for-you-container{
     width: 100%;
     display:flex;

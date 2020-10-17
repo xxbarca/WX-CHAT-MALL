@@ -17,6 +17,7 @@
     <view class="spu-bottom">
         <l-water-flow generic:l-water-flow-item="s-spu-preview"></l-water-flow>
     </view>
+    <text class="author"> - ly -</text>
 </scroll-view>
 
 
