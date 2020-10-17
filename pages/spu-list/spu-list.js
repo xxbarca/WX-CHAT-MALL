@@ -21,7 +21,6 @@ Page({
 		if (type === SpuListType.ROOT_CATEGORY) {
 			data = await Spu.getByCategory(cid, true)
 		}
-		console.log(data)
 		wx.lin.renderWaterFlow(data.list)
 		this.setData({
 			spuData: data,

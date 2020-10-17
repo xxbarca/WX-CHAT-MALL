@@ -2,6 +2,7 @@
 import {Cart} from "../../models/cart"
 import {Calculator} from "../../models/calculator"
 import {ShoppingWay} from "../../core/enum"
+import {Spu} from "../../models/spu"
 
 const cart = new Cart()
 
@@ -57,7 +58,7 @@ Page({
 	onShow: async function (options) {
 		const cartItems = cart.getAllCartItemFromLocal().items
 		if (cart.isEmpty()) {
-			this.empty()
+			await this.empty()
 			return
 		}
 		this.setData({
@@ -124,10 +125,12 @@ Page({
     	this.refreshCartData()
 	},
 	
-	empty() {
+	async empty() {
     	this.setData({
 		    isEmpty: true
 	    })
+		const data = await Spu.getLatestSpu()
+		wx.lin.renderWaterFlow(data.list)
 		wx.hideTabBarRedDot({
 			index: 2
 		})
