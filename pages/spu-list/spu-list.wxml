@@ -1,20 +1,16 @@
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
 
-<view class="empty-container" wx:if="{{isEmpty}}">
-    <s-empty show text="该分类暂时没有商品"></s-empty>
-</view>
 
-<view wx:if="{{!isEmpty}}">
-    <block wx:for="{{spuData.list}}">
-        <view bind:tap="onGoToDetail" data-id="{{item.id}}" class="item-container">
-            <image src="{{item.img}}"></image>
-            <view class="desc">
-                <text class="title">{{item.title}}</text>
-                <text wx:if="{{item.tags}}">{{item.tags}}</text>
-                <view class="price-row">
 
-                </view>
-            </view>
+<l-loadmore show="{{!isEmpty}}"
+            end-text="- 没有更多数据 -"
+            type="{{loadingType}}">
+    <view slot="content" class="container">
+        <view class="empty-container" wx:if="{{isEmpty}}">
+            <s-empty show text="该分类暂时没有商品"></s-empty>
         </view>
-    </block>
-</view>
+        <view wx:else class="spu-bottom">
+            <l-water-flow generic:l-water-flow-item="s-spu-preview"></l-water-flow>
+        </view>
+    </view>
+</l-loadmore>
