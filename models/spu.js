@@ -20,6 +20,12 @@ class Spu {
 		    url: `/spu/by/category/${id}?start=${start}&count=${count}`
 	    })
     }
+    
+    static getLatestSpu(start = 0, count = 10) {
+        return Http.request({
+	        url: `/spu/latest?start=${start}&count=${count}`
+        })
+    }
 }
 
 export {

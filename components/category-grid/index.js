@@ -10,6 +10,8 @@ Component({
 	},
 
 	methods: {
-
+		onGotoDetail(event) {
+			console.log(event)
+		}
 	}
 })

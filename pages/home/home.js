@@ -5,6 +5,7 @@ import {Category} from "../../models/category";
 import {Activity} from "../../models/activity";
 import {SpuPaging} from "../../models/spu-paging";
 import {CouponCenterType} from "../../core/enum"
+import {Spu} from "../../models/spu"
 
 Page({
 
@@ -19,14 +20,23 @@ Page({
 		bannerG: null,
         grid: [],
         activityD: null,
-        spuPaging:null,
-        loadingType:'loading'
+        spuPaging: null,
+        loadingType: 'loading'
     },
 
     async onLoad(options) {
         await this.initAllData()
-        await this.initBottomSpuList()
+        // await this.initBottomSpuList()
+	    await this.initBottomSpus()
     },
+	
+	async initBottomSpus() {
+        const data = await Spu.getLatestSpu()
+		wx.lin.renderWaterFlow(data.list)
+		this.setData({
+			loadingType: 'end'
+		})
+	},
 
     async initBottomSpuList() {
         const paging = SpuPaging.getLatestPaging()
@@ -77,6 +87,8 @@ Page({
     },
 
     onReachBottom: async function () {
+    	// TODO - 下拉刷新
+    	return
         const data = await this.data.spuPaging.getMoreData()
         if(!data){
             return

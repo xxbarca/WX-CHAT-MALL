@@ -1,7 +1,7 @@
 <view class="container">
     <l-grid l-class="inner-container">
         <block wx:key="grid" wx:for="{{grid}}">
-            <l-grid-item key="{{index}}" slot="{{index}}">
+            <l-grid-item bind:tap="onGotoDetail" data-id="{{item.root_category_id}}" key="{{index}}" slot="{{index}}">
                 <view class="grid-item">
                     <image class="img" src="{{item.img}}" />
                     <text class="text">{{item.title}}</text>
