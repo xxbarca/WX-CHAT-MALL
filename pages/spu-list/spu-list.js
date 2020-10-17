@@ -1,5 +1,6 @@
 // pages/spu-list/spu-list.js
 import {Spu} from "../../models/spu"
+import {SpuListType} from "../../core/enum"
 
 Page({
 	properties: {
@@ -13,7 +14,14 @@ Page({
 	},
 	onLoad: async function(options) {
 		const { cid, type } = options
-		const data = await Spu.getByCategory(cid)
+		let data = null
+		if (type === SpuListType.SUB_CATEGORY) {
+			data = await Spu.getByCategory(cid)
+		}
+		if (type === SpuListType.ROOT_CATEGORY) {
+			data = await Spu.getByCategory(cid, true)
+		}
+		console.log(data)
 		wx.lin.renderWaterFlow(data.list)
 		this.setData({
 			spuData: data,

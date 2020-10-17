@@ -1,3 +1,4 @@
+import {SpuListType} from "../../core/enum"
 
 Component({
 	
@@ -12,6 +13,10 @@ Component({
 	methods: {
 		onGotoDetail(event) {
 			console.log(event)
+			const cid = event.currentTarget.dataset.id
+			wx.navigateTo({
+				url: `/pages/spu-list/spu-list?cid=${cid}&type=${SpuListType.ROOT_CATEGORY}`
+			})
 		}
 	}
 })

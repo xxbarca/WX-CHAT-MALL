@@ -15,9 +15,9 @@ class Spu {
         })
     }
     
-    static getByCategory(id, start = 0, count = 10) {
+    static getByCategory(id, is_root = false, start = 0, count = 10) {
     	return Http.request({
-		    url: `/spu/by/category/${id}?start=${start}&count=${count}`
+		    url: `/spu/by/category/${id}?start=${start}&count=${count}&is_root=${is_root}`
 	    })
     }
     
