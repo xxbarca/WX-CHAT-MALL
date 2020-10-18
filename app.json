@@ -7,7 +7,8 @@
     "pages/my/my",
     "pages/search/search",
     "pages/order/order",
-    "pages/coupon/coupon"
+    "pages/coupon/coupon",
+    "pages/my-coupon/my-coupon"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -68,6 +69,7 @@
     "l-icon": "/miniprogram_npm/lin-ui/icon/index",
     "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
     "l-avatar": "/miniprogram_npm/lin-ui/avatar/index",
+    "l-list": "/miniprogram_npm/lin-ui/list/index",
     "s-spu-preview": "/components/spu-preview/index",
     "s-spu-preview-r": "/components/spu-preview-r/index",
     "s-empty": "/components/empty/index",

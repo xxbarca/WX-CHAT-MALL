@@ -48,7 +48,7 @@ Component({
 		
 		onGotoMyCoupon(event) {
 			wx.navigateTo({
-				url:`/pages/coupon/coupon`
+				url:`/pages/my-coupon/my-coupon`
 			})
 		},
 		

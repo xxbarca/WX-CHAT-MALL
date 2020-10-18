@@ -11,5 +11,17 @@ Page({
 		this.setData({
 			couponCount: coupons.length
 		})
-    }
+    },
+	onGotoMyOrder() {
+	
+	},
+	onGotoMyCoupon() {
+		wx.navigateTo({
+			url:`/pages/my-coupon/my-coupon`
+		})
+	
+	},
+	onMgrAddress() {
+	
+	}
 })
