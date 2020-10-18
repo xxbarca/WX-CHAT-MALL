@@ -1,2 +1,7 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+    <s-my-banner couponCount="{{couponCount}}"></s-my-banner>
+
+    <view class="main-container">
+        <s-my-order-panel></s-my-order-panel>
+    </view>
+</view>

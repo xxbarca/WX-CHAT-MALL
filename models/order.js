@@ -1,5 +1,5 @@
 import {OrderException} from "../core/order-exception"
-import {OrderExceptionType} from "../core/enum"
+import {OrderExceptionType, OrderStatus} from "../core/enum"
 import {accAdd} from "../utils/number"
 import {Http} from "../utils/http"
 
@@ -108,6 +108,36 @@ class Order {
 				count: item.count
 			}
 		})
+	}
+	
+	/**
+	 * 获取待发货订单数量
+	 * */
+	static async getPaidCount() {
+		const data = await Http.request({
+			url: `/order/by/status/${OrderStatus.PAID}`
+		})
+		return data.total
+	}
+	
+	/**
+	 * 获取未支付订单数量
+	 * */
+	static async getUnpaidCount() {
+		const data = await Http.request({
+			url: `/order/status/unpaid`
+		})
+		return data.total
+	}
+	
+	/**
+	 * 获取所有已发货订单数量
+	 * */
+	static async getDeliveredCount() {
+		const data = await Http.request({
+			url: `/order/by/status/${OrderStatus.DELIVERED}`
+		})
+		return data.total
 	}
 }
 
