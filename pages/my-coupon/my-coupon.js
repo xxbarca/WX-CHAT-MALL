@@ -18,7 +18,7 @@ Page({
 		coupons = coupons.map(item => {
 			return {
 				...item,
-				userCollected: true
+				user_collected: true
 			}
 		})
 		this.setData({
