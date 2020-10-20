@@ -28,6 +28,9 @@ Component({
 			if (!coupon) {
 				return
 			}
+			if (coupon.userCollected === true) {
+				this.setUserCollected()
+			}
 			this.setData({
 				_coupon: new CouponData(coupon),
 			})

@@ -14,7 +14,13 @@ Page({
     },
 	
 	async change(status) {
-    	const coupons = await Coupon.getMyCoupons(status)
+    	let coupons = await Coupon.getMyCoupons(status)
+		coupons = coupons.map(item => {
+			return {
+				...item,
+				userCollected: true
+			}
+		})
 		this.setData({
 			coupons,
 			activeKey: status
