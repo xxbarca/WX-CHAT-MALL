@@ -1,1 +1,2 @@
 <s-theme-janna wx:if="{{_tplName=='janna'}}" theme="{{_theme}}"></s-theme-janna>
+<s-theme-diana wx:if="{{_tplName=='diana'}}" theme="{{_theme}}"></s-theme-diana>
