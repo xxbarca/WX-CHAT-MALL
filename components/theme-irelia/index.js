@@ -41,6 +41,12 @@ Component({
 				h: height,
 				w: width,
 			})
+		},
+		onGoToSpu(event) {
+			const id = event.currentTarget.dataset.spu.id
+			wx.navigateTo({
+				url: `/pages/detail/detail?pid=${id}`
+			})
 		}
 	}
 })
