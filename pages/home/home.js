@@ -108,6 +108,12 @@ Page({
             })
         }
     },
+	onGoToBanner(event) {
+		const keyword = event.currentTarget.dataset.keyword
+		const type = event.currentTarget.dataset.type
+		console.log(keyword, type)
+		Banner.gotoTarget(type, keyword)
+	},
 	
 	onGoToCoupons: function(event) {
     	const name = event.currentTarget.dataset.aname

@@ -66,6 +66,12 @@ const OrderStatus = {
 	CANCELED: 5,
 }
 
+const BannerItemType = {
+	SPU: 1,
+	THEME: 2,
+	SPU_LIST: 3
+}
+
 export {
     CellTagStatus,
     ShoppingWay,
@@ -76,5 +82,6 @@ export {
 	CouponStatus,
 	CouponType,
 	CouponOperate,
-	OrderStatus
+	OrderStatus,
+	BannerItemType
 }
