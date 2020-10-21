@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "s-theme-janna": "/components/theme-janna/index",
-    "s-theme-diana": "/components/theme-diana/index"
+    "s-theme-diana": "/components/theme-diana/index",
+    "s-theme-irelia": "/components/theme-irelia/index"
   }
 }
