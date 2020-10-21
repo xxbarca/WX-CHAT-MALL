@@ -2,7 +2,7 @@
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
 
 <view class="container" >
-    <image src="{{theme.title_img}}" class="title" />
+    <image src="{{theme.title_img}}" class="title"  bind:tap="handleOnJumpTheme" data-theme="{{theme}}" />
     <scroll-view scroll-x class="scroll-view">
         <view  class="inner">
             <block wx:key="scroll" wx:for="{{spuList}}">
