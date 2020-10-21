@@ -9,7 +9,8 @@
     "pages/order/order",
     "pages/coupon/coupon",
     "pages/my-coupon/my-coupon",
-    "pages/theme/theme"
+    "pages/theme/theme",
+    "pages/theme-spu-list/theme-spu-list"
   ],
   "enablePullDownRefresh": true,
   "window": {
