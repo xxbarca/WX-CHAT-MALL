@@ -55,10 +55,9 @@
     "miniprogram": {
       "list": [
         {
-          "id": 0,
           "name": "pages/detail/detail",
           "pathName": "pages/detail/detail",
-          "query": "pid=2",
+          "query": "pid=3",
           "scene": null
         },
         {

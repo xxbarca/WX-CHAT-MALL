@@ -2,7 +2,7 @@
             end-text="- 没有更多数据 -"
             type="{{loadingType}}">
     <view slot="content" class="container">
-        <image class="top-theme" src="{{themeA.entrance_img}}"></image>
+        <image class="top-theme" bind:tap="handleOnJumpTheme" data-theme="{{themeA}}" src="{{themeA.entrance_img}}"></image>
         <swiper class="swiper"
                 indicator-dots
                 indicator-active-color="#157658"

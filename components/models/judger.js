@@ -142,6 +142,8 @@ class Judger {
             // this.fenceGroup.fences[x].cells[y].status = CellTagStatus.SELECTED
             this.fenceGroup.setCellStatusByXY(x, y, CellTagStatus.SELECTED)
             this.skuPending.insertCell(cell, x)
+	        // console.log(this.fenceGroup)
+	        // console.log(this.skuPending)
         }
         if (cell.status === CellTagStatus.SELECTED) {
             // this.fenceGroup.fences[x].cells[y].status = CellTagStatus.WAITING

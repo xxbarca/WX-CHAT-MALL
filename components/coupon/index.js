@@ -28,7 +28,6 @@ Component({
 			if (!coupon) {
 				return
 			}
-			console.log(coupon)
 			if (coupon.user_collected === true) {
 				this.setUserCollected()
 			}

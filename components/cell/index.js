@@ -21,7 +21,6 @@ Component({
      */
     methods: {
         onTap(event) {
-	
 	        // cell -> fence -> realm
             this.triggerEvent('celltap', {
                 // 子组件通过事件向父组件传参

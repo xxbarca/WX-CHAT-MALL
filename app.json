@@ -8,8 +8,10 @@
     "pages/search/search",
     "pages/order/order",
     "pages/coupon/coupon",
-    "pages/my-coupon/my-coupon"
+    "pages/my-coupon/my-coupon",
+    "pages/theme/theme"
   ],
+  "enablePullDownRefresh": true,
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -74,6 +76,7 @@
     "s-spu-preview-r": "/components/spu-preview-r/index",
     "s-empty": "/components/empty/index",
     "s-coupon": "/components/coupon/index",
-    "s-order-sku-item": "/components/order-sku-item/index"
+    "s-order-sku-item": "/components/order-sku-item/index",
+    "s-spu-preview-h": "/components/spu-preview-h/index"
   }
 }

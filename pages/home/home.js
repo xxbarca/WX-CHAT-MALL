@@ -85,6 +85,13 @@ Page({
             themeH
         })
     },
+	
+	handleOnJumpTheme(event) {
+    	const theme = event.target.dataset.theme
+		wx.navigateTo({
+			url: `/pages/theme/theme?name=${theme.name}`
+		})
+	},
 
     onReachBottom: async function () {
     	// TODO - 下拉刷新
@@ -108,8 +115,8 @@ Page({
 	    })
 	},
 
-    onPullDownRefresh: function () {
-
+    onPullDownRefresh: async function () {
+    	console.log(123)
     },
 
 
