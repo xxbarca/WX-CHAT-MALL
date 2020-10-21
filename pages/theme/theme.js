@@ -11,7 +11,6 @@ Page({
     },
     onLoad: async function (options) {
     	const theme = await Theme.getThemeSpuByName(options.name)
-	    
 	    this.setData({
 		    _theme: theme,
 		    _tplName: theme.tpl_name,

@@ -88,7 +88,6 @@ Page({
 	
 	handleOnJumpTheme(event) {
     	const theme = event.target.dataset.theme
-		console.log(theme)
 		wx.navigateTo({
 			url: `/pages/theme/theme?name=${theme.name}`
 		})
@@ -111,7 +110,6 @@ Page({
 	onGoToBanner(event) {
 		const keyword = event.currentTarget.dataset.keyword
 		const type = event.currentTarget.dataset.type
-		console.log(keyword, type)
 		Banner.gotoTarget(type, keyword)
 	},
 	
@@ -123,7 +121,6 @@ Page({
 	},
 
     onPullDownRefresh: async function () {
-    	console.log(123)
     },
 
 

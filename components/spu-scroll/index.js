@@ -19,7 +19,6 @@ Component({
 		},
 		handleOnJumpTheme(event) {
 			const theme = event.target.dataset.theme
-			console.log(theme)
 			wx.navigateTo({
 				url: `/pages/theme/theme?name=${theme.name}`
 			})

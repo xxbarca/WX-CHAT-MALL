@@ -31,7 +31,6 @@ Component({
 	 */
 	methods: {
 		async onAuthUserInfo(event) {
-			console.log(event.detail)
 			if (event.detail.userInfo) {
 				const success = await User.updateUserInfo(event.detail.userInfo)
 				this.setData({

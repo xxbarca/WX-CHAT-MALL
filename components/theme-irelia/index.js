@@ -23,7 +23,6 @@ Component({
 				spuList: theme.spu_list
 			})
 			const randoms = this.getRandoms(theme.spu_list.length)
-			console.log(randoms)
 			this.setData({
 				randoms: randoms
 			})
@@ -36,7 +35,6 @@ Component({
 		},
 		onLoadImg(event) {
 			const {height, width} = event.detail
-			console.log(height,width)
 			this.setData({
 				h: height,
 				w: width,

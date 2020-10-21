@@ -1,5 +1,5 @@
 <view class="container">
-    <image src="{{banner.img}}" class="title" />
+    <image data-tname="t-5" bind:tap="onGotToTheme" src="{{banner.img}}" class="title" />
     <view class="inner-container">
         <view hover-class="rect-hover" hover-stay-time="300">
             <image data-keyword="{{left.keyword}}" data-type="{{left.type}}"  bind:tap="onGotoDetail" src="{{left.img}}" class="left" />

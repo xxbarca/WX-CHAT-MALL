@@ -37,12 +37,10 @@ Page({
 		if (!description) {
 			return []
 		}
-		console.log(description.split('#'))
 		return description.split('#');
 	},
 	onLoadImg(event) {
 		const {height, width} = event.detail
-		console.log(height,width)
 		this.setData({
 			h: height,
 			w: width,

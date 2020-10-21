@@ -16,7 +16,6 @@ Component({
 	
 	observers: {
 		'theme': function (theme) {
-			console.log(theme)
 			this.setData({
 				topImg: theme.extend,
 				descriptions: theme.description.split('#'),
@@ -28,7 +27,6 @@ Component({
 	methods: {
 		onLoadImg(event) {
 			const {height, width} = event.detail
-			console.log(height,width)
 			this.setData({
 				h: height,
 				w: width,
