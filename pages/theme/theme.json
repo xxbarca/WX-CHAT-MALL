@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "s-theme-janna": "/components/theme-janna/index"
+  }
+}

@@ -24,7 +24,7 @@
                 wx:if="{{themeE.online}}">
         </s-spu-scroll>
 
-        <image src="{{themeF.entrance_img}}" class="quality"></image>
+        <image bind:tap="handleOnJumpTheme" data-theme="{{themeF}}" src="{{themeF.entrance_img}}" class="quality"></image>
 
         <s-hot-list banner="{{bannerG}}"></s-hot-list>
 
