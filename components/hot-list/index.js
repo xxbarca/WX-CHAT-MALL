@@ -1,3 +1,4 @@
+import {Banner} from "../../models/banner"
 
 Component({
 	
@@ -35,6 +36,10 @@ Component({
 
 	
 	methods: {
-
+		onGotoDetail(event) {
+			const keyword = event.currentTarget.dataset.keyword
+			const type = event.currentTarget.dataset.type
+			Banner.gotoTarget(type, keyword)
+		}
 	}
 })
